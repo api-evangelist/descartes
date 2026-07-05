@@ -1,0 +1,187 @@
+aid: descartes
+url: https://raw.githubusercontent.com/api-evangelist/descartes/refs/heads/main/apis.yml
+name: Descartes Systems Group
+kind: company
+description: >-
+  The Descartes Systems Group is a global logistics and supply chain software
+  company whose cloud-based Global Logistics Network connects manufacturers,
+  distributors, carriers, brokers, and freight forwarders. Descartes delivers
+  its capabilities across a large family of products - real-time freight
+  visibility and carrier sourcing (Descartes MacroPoint), customs and
+  regulatory compliance and trade content (Descartes CustomsInfo, NetCHB),
+  global trade intelligence (Descartes Datamyne), routing and mobile, and B2B
+  connectivity and messaging. Descartes exposes APIs on a per-product basis:
+  the MacroPoint visibility, capacity, and carrier integration APIs are
+  publicly documented (customer credentials required), while trade content,
+  trade data, and B2B connectivity APIs are provisioned through the Descartes
+  API portal or a sales/contract engagement. Most API access is
+  customer/partner-gated rather than open self-service signup.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Logistics
+- Supply Chain
+- Freight Visibility
+- Shipment Tracking
+- Customs Compliance
+- Global Trade
+- Trade Content
+- Carrier Sourcing
+created: '2026-07-05'
+modified: '2026-07-05'
+specificationVersion: '0.19'
+apis:
+- aid: descartes:descartes-macropoint-visibility-api
+  name: Descartes MacroPoint Visibility API
+  tags:
+  - Freight Visibility
+  - Shipment Tracking
+  - Real-Time Tracking
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.macropoint.com/
+  baseURL: https://macropoint-lite.com/api/1.0
+  properties:
+  - url: https://docs.macropoint.com/
+    type: Documentation
+  - url: https://www.descartes.com/solutions/logistics-technology-platform/real-time-shipment-tracking-visibility
+    type: ProductPage
+  description: >-
+    Real-time freight and shipment visibility. Lets a shipper, broker, or 3PL
+    create, update, monitor, and stop tracking sessions on loads directly from
+    a TMS or ERP and receive location, order-status, trip-event, and
+    form-submit updates via callbacks. Base https://macropoint-lite.com/api/1.0
+    with HTTP Basic authentication and XML request/response bodies. Confirmed
+    operations include POST /orders/createorder and POST /tms/data/location;
+    the full surface is documented at docs.macropoint.com. Access requires
+    MacroPoint customer credentials (gated).
+- aid: descartes:descartes-macropoint-capacity-api
+  name: Descartes MacroPoint Capacity Integration API
+  tags:
+  - Carrier Sourcing
+  - Capacity Matching
+  - Freight
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://capacitydocs.macropoint.com/
+  baseURL: https://macropoint-lite.com/api/1.0
+  properties:
+  - url: https://capacitydocs.macropoint.com/
+    type: Documentation
+  - url: https://macropoint.com/
+    type: ProductPage
+  description: >-
+    Intelligent carrier sourcing and capacity matching. An Import API pushes
+    available-capacity and load data into MacroPoint Capacity, and an Export
+    API returns carrier matches back into the customer's system. Documented at
+    capacitydocs.macropoint.com. Exact endpoint paths are provisioned to
+    customers; specific operations here are modeled from the published
+    integration guides (endpointsModeled). Access is gated behind a MacroPoint
+    Capacity account.
+- aid: descartes:descartes-macropoint-carrier-api
+  name: Descartes MacroPoint Carrier Integration API
+  tags:
+  - Carrier Integration
+  - Telematics
+  - Location Updates
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://carrierdocs.macropoint.com/
+  baseURL: https://macropoint-lite.com/api/1.0
+  properties:
+  - url: https://carrierdocs.macropoint.com/
+    type: Documentation
+  - url: https://www.postman.com/macropoint-telematics
+    type: PostmanWorkspace
+  description: >-
+    Carrier-facing integration for the MacroPoint Visibility network. Lets
+    carriers and telematics/ELD providers supply location updates as lat/long
+    coordinate sets or addresses, plus load event updates (arrival/departure)
+    and tracking-method assignment. Documented at carrierdocs.macropoint.com
+    with public Postman collections under the macropoint-telematics workspace.
+    Specific endpoint paths are modeled from the published guides
+    (endpointsModeled). Access requires carrier/partner onboarding (gated).
+- aid: descartes:descartes-customsinfo-trade-content-api
+  name: Descartes CustomsInfo Trade Content API
+  tags:
+  - Customs Compliance
+  - Trade Content
+  - HS Classification
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.customsinfo.com/knowledge-center/trade-content-apis-streamlining-classification-and-enhancing-business-integration/
+  properties:
+  - url: https://www.customsinfo.com/knowledge-center/trade-content-apis-streamlining-classification-and-enhancing-business-integration/
+    type: Documentation
+  - url: https://www.descartes.com/solutions/customs-and-regulatory-compliance
+    type: ProductPage
+  description: >-
+    Trade content and classification for customs and regulatory compliance.
+    Delivers Harmonized System (HS) codes and product classification, current
+    tariff and duty rates and preferential-tariff details, binding rulings,
+    import/export restrictions, licensing and safety-certification data, and
+    origin/destination trade-agreement content, in JSON or XML for embedding in
+    ERP, GTM, WMS, and TMS systems. No public self-service endpoint reference is
+    published; operations are modeled from the CustomsInfo trade-content API
+    materials (endpointsModeled) and access is arranged via contract with a
+    Descartes global trade content specialist (gated).
+- aid: descartes:descartes-datamyne-trade-data-api
+  name: Descartes Datamyne Global Trade Data API
+  tags:
+  - Global Trade
+  - Trade Data
+  - Market Intelligence
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.datamyne.com/our-product/global-trade-data-api/
+  properties:
+  - url: https://www.datamyne.com/our-product/global-trade-data-api/
+    type: Documentation
+  - url: https://www.descartes.com/solutions/customs-and-regulatory-compliance/global-trade-intelligence
+    type: ProductPage
+  description: >-
+    Programmatic access to Descartes Datamyne's global import/export trade data
+    - bill-of-lading and customs records, trade flows, and company/commodity
+    intelligence - for embedding market and supply chain intelligence into
+    internal applications. No public self-service endpoint reference is
+    published; operations are modeled from the Datamyne product materials
+    (endpointsModeled) and access is arranged via subscription/contract
+    (gated).
+- aid: descartes:descartes-b2b-api-connectivity
+  name: Descartes B2B API Connectivity
+  tags:
+  - B2B Connectivity
+  - Global Logistics Network
+  - Messaging
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api.descartes.com/
+  baseURL: https://api.descartes.com
+  properties:
+  - url: https://api.descartes.com/
+    type: DeveloperPortal
+  - url: https://www.descartes.com/solutions/b2b-connectivity-and-messaging/api-connectivity
+    type: ProductPage
+  description: >-
+    Real-time B2B connectivity over the Descartes Global Logistics Network,
+    complementing traditional EDI. Provides synchronous request/response
+    integrations for marketplace connectivity (exchanging listings, orders,
+    payments, and reports with retailers such as Amazon and bol.com) and
+    multimodal carrier connectivity (rates, shipment details, bookings, and
+    waybills). APIs are discovered and keys acquired through the Descartes API
+    portal at api.descartes.com, which requires sign-up and approval; specific
+    endpoints are modeled from the portal and product materials
+    (endpointsModeled).
+common:
+- type: Website
+  url: https://www.descartes.com
+- type: DeveloperPortal
+  url: https://api.descartes.com/
+- type: Documentation
+  url: https://docs.macropoint.com/
+- type: LinkedIn
+  url: https://www.linkedin.com/company/descartes-systems-group
+- type: PostmanWorkspace
+  url: https://www.postman.com/macropoint-telematics
+- type: Plans
+  url: plans/descartes-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/descartes-rate-limits.yml
+- type: FinOps
+  url: finops/descartes-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

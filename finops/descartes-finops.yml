@@ -1,0 +1,105 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Descartes Systems Group
+providerId: descartes
+created: '2026-07-05'
+modified: '2026-07-05'
+reconciled: false
+tags:
+- Logistics
+- Supply Chain
+- Freight Visibility
+- Customs Compliance
+- Global Trade
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Descartes API spend. Descartes prices its APIs as part of
+  enterprise product subscriptions and contracts rather than as standalone
+  metered APIs, so cost allocation follows the product line - MacroPoint
+  visibility/capacity (typically driven by tracked-load / shipment volume),
+  CustomsInfo trade content and Datamyne trade data (data entitlements), and
+  B2B connectivity over the Global Logistics Network (message/connection
+  volume). There is no public per-call rate, so unit economics are governed by
+  the negotiated contract. Rates are not reconciled here.
+notes: >-
+  Because pricing is contract-based, the primary cost drivers to track are
+  product subscription fees and volume metrics (tracked loads, data records,
+  connectivity messages). Confirm meter definitions and rates with Descartes
+  during procurement.
+sources:
+- https://www.descartes.com
+- https://api.descartes.com/
+- https://docs.macropoint.com/
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Descartes Systems Group
+serviceCategory: Logistics and Supply Chain Software
+billingModel:
+  pricingCategory: Contract-Based
+  billingFrequency: Annual
+  billingCurrency: USD
+  chargeCategories:
+  - Purchase
+  - Usage
+  - Adjustment
+focusColumns:
+  ServiceName: Descartes API
+  ServiceCategory: Logistics and Supply Chain Software
+  ProviderName: Descartes Systems Group
+  PublisherName: Descartes Systems Group
+  InvoiceIssuerName: Descartes Systems Group
+  BillingCurrency: USD
+  ChargeCategory: Purchase
+  PricingCategory: Contract-Based
+meters:
+- name: tracked_loads
+  description: Shipments/loads tracked through MacroPoint visibility; a primary volume driver for MacroPoint API cost.
+  unit: loads
+  aggregation: sum
+  dimensions:
+  - account
+  - product
+- name: capacity_matches
+  description: Carrier capacity matches processed through MacroPoint Capacity Import/Export.
+  unit: matches
+  aggregation: sum
+  dimensions:
+  - account
+- name: trade_content_records
+  description: Trade content lookups / records consumed from CustomsInfo (HS classification, tariff/duty, rulings).
+  unit: records
+  aggregation: sum
+  dimensions:
+  - account
+- name: trade_data_records
+  description: Global trade data records retrieved from Datamyne (bill-of-lading, customs records).
+  unit: records
+  aggregation: sum
+  dimensions:
+  - account
+- name: connectivity_messages
+  description: B2B messages exchanged over the Global Logistics Network.
+  unit: messages
+  aggregation: sum
+  dimensions:
+  - account
+principles:
+- name: Visibility
+  description: Track volume per product (tracked loads, capacity matches, trade content/data records, connectivity messages) since these drive contract cost even without a public per-call rate.
+- name: Allocation
+  description: Map each Descartes product subscription and its API usage to the business unit or workflow that consumes it.
+- name: Optimization
+  description: Right-size product subscriptions to actual shipment/data volume; consolidate connectivity onto the Global Logistics Network where it replaces point-to-point EDI.
+- name: Accountability
+  description: Assign owners per Descartes product line and review annual contract spend against realized volume during renewal.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

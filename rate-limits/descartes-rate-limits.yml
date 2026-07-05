@@ -1,0 +1,65 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Descartes Systems Group
+providerId: descartes
+created: '2026-07-05'
+modified: '2026-07-05'
+reconciled: false
+tags:
+- Logistics
+- Supply Chain
+- Freight Visibility
+- Customs Compliance
+- Rate Limiting
+- Quotas
+description: >-
+  Descartes does not publish fixed numeric rate limits for its product APIs.
+  Throughput and quotas are governed by each customer's contract and product
+  subscription (MacroPoint tracked-load volume, CustomsInfo/Datamyne data
+  entitlements, B2B connectivity agreements) rather than by a public
+  per-minute request cap. Asynchronous MacroPoint updates are pushed to
+  customer-hosted HTTP callback URLs, so notification volume follows shipment
+  activity rather than a client-poll limit. Numeric limits below are not
+  documented publicly and should be confirmed with Descartes.
+notes: >-
+  No public per-account or per-endpoint numeric limits are documented as of the
+  review date. Confirm limits, retry, and error-code behavior with Descartes
+  during onboarding via api.descartes.com or MacroPoint support.
+sources:
+- https://docs.macropoint.com/
+- https://capacitydocs.macropoint.com/
+- https://api.descartes.com/
+responseCodes:
+  throttled: not published
+limits:
+- name: MacroPoint Visibility API Requests
+  scope: account
+  metric: requests
+  limit: not published
+  notes: Governed by MacroPoint customer contract and tracked-load volume; no public request-rate cap documented.
+- name: MacroPoint Capacity Import/Export
+  scope: account
+  metric: requests
+  limit: not published
+  notes: Import/Export API throughput follows the Capacity subscription; not publicly enumerated.
+- name: Trade Content / Trade Data API Calls
+  scope: account
+  metric: requests
+  limit: per contract
+  notes: CustomsInfo and Datamyne API entitlements are set per subscription/contract.
+- name: B2B Connectivity Messaging
+  scope: account
+  metric: messages
+  limit: per contract
+  notes: Global Logistics Network messaging volume governed by the connectivity agreement.
+policies:
+- name: Contract-Governed Quotas
+  description: API throughput and quotas are defined by each customer's product subscription and contract rather than a public rate-limit policy.
+- name: Callback Delivery
+  description: MacroPoint delivers Location Updates, Order Status Change, Trip Event Updates, and Form Submits to customer-hosted HTTP callback URLs; the receiving endpoint must be able to absorb bursts tied to shipment activity.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor any Retry-After guidance provided by Descartes support on throttling.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

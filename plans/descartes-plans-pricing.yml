@@ -1,0 +1,127 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Descartes Systems Group
+providerId: descartes
+created: '2026-07-05'
+modified: '2026-07-05'
+reconciled: false
+tags:
+- Logistics
+- Supply Chain
+- Freight Visibility
+- Customs Compliance
+- Global Trade
+- Plans
+description: >-
+  Descartes does not publish a public, per-call price list for its APIs. Pricing
+  is enterprise and contract-based, quoted per product and per volume by the
+  Descartes sales team. API access is bundled with the underlying product
+  subscription - MacroPoint visibility and capacity, CustomsInfo trade content,
+  Datamyne trade data, or B2B connectivity over the Global Logistics Network -
+  rather than sold as a standalone metered API. The plans below are honestly
+  modeled tiers reflecting how Descartes engages customers; specific rates are
+  not reconciled here.
+notes: >-
+  No public pricing page enumerates API rates. Third-party estimates for the
+  broader Descartes Global Logistics platform range from tens of dollars per
+  user per month for small footprints up to custom enterprise contracts;
+  API-specific pricing must be obtained from Descartes. Verify current terms
+  during reconciliation via api.descartes.com or a Descartes sales contact.
+sources:
+- https://www.descartes.com
+- https://api.descartes.com/
+- https://docs.macropoint.com/
+- https://www.descartes.com/solutions/b2b-connectivity-and-messaging/api-connectivity
+plans:
+- id: descartes-macropoint-subscription
+  name: MacroPoint Product Subscription (API Included)
+  type: enterprise
+  description: >-
+    API access to the MacroPoint Visibility, Capacity, and Carrier integration
+    surfaces is included with a MacroPoint product subscription. Customer
+    credentials (HTTP Basic auth) are issued as part of onboarding. Priced by
+    tracked-load volume and modules; contact Descartes.
+  entries:
+  - label: MacroPoint Subscription
+    name: macropoint_subscription
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Visibility API Access
+  - name: Capacity Integration
+  - name: Carrier Integration
+  - name: HTTP Callback Notifications
+- id: descartes-trade-content-contract
+  name: CustomsInfo Trade Content API (Contract)
+  type: enterprise
+  description: >-
+    Trade content and classification API (HS codes, tariff/duty rates, binding
+    rulings, regulatory content) provisioned via a contract with a Descartes
+    global trade content specialist. Priced by content coverage and volume.
+  entries:
+  - label: Trade Content Agreement
+    name: trade_content_agreement
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: HS Classification
+  - name: Tariff and Duty Data
+  - name: Regulatory Content
+- id: descartes-datamyne-subscription
+  name: Datamyne Global Trade Data API (Subscription)
+  type: enterprise
+  description: >-
+    Global import/export trade data API provisioned via a Datamyne
+    subscription. Priced by data coverage (countries, records) and volume.
+  entries:
+  - label: Datamyne Subscription
+    name: datamyne_subscription
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Bill-of-Lading Data
+  - name: Trade Flow Intelligence
+- id: descartes-b2b-connectivity
+  name: B2B API Connectivity / API Portal (Contract)
+  type: enterprise
+  description: >-
+    B2B connectivity over the Global Logistics Network. Developers browse APIs
+    and request keys through the Descartes API portal (api.descartes.com);
+    production access and pricing are arranged by contract.
+  entries:
+  - label: Connectivity Agreement
+    name: connectivity_agreement
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Marketplace Connectivity
+  - name: Carrier Connectivity
+  - name: Global Logistics Network Messaging
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

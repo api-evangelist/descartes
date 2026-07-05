@@ -1,0 +1,108 @@
+aid: descartes
+name: Descartes Systems Group
+review:
+  question: Does Descartes expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-05'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Descartes' documented API surfaces are
+    request/response HTTP - the MacroPoint Visibility API is XML over HTTPS with
+    HTTP Basic auth, and the trade content, trade data, and B2B connectivity
+    APIs are synchronous request/response REST provisioned through the Descartes
+    API portal or a sales contract. Server-initiated updates in MacroPoint are
+    delivered by HTTP callbacks (Location Updates, Order Status Change, Trip
+    Event Updates, Form Submits) that Descartes POSTs to a customer-hosted URL,
+    not by a WebSocket or SSE channel. There is no documented ws:// or wss://
+    endpoint to model.
+findings:
+  summary: |
+    Descartes does not publish a documented public WebSocket API. Descartes is a
+    large logistics and supply chain software group and exposes APIs
+    per-product. The most publicly documented is the Descartes MacroPoint
+    Visibility API (base https://macropoint-lite.com/api/1.0), which uses HTTP
+    Basic authentication and XML request/response bodies over HTTPS; confirmed
+    operations include POST /orders/createorder and POST /tms/data/location, and
+    asynchronous updates are delivered via customer-hosted HTTP callback URLs
+    rather than a socket. MacroPoint Capacity (Import/Export API) and Carrier
+    integration are likewise documented HTTP integrations gated behind customer
+    or partner accounts. Trade content (Descartes CustomsInfo), global trade
+    data (Descartes Datamyne), and B2B connectivity over the Global Logistics
+    Network are provisioned through the Descartes API portal
+    (api.descartes.com) or a sales/contract engagement. No realtime,
+    bidirectional WebSocket (ws:// or wss://) endpoint is documented on any of
+    Descartes' public API surfaces as of the review date.
+  accessModel: |
+    Access is customer/partner-gated rather than open self-service. MacroPoint
+    APIs are documented publicly (docs.macropoint.com, capacitydocs, carrierdocs
+    and a public macropoint-telematics Postman workspace) but require MacroPoint
+    customer credentials for HTTP Basic auth. Trade content and trade data APIs
+    are arranged via contract. The Descartes API portal at api.descartes.com
+    lets developers browse APIs and requires sign-up/approval to obtain keys.
+    Pricing is enterprise/contact-sales; no public per-call price list is
+    published.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://macropoint-lite.com/api/1.0
+      documented: true
+      note: MacroPoint Visibility API. HTTP Basic auth, XML request/response bodies.
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.descartes.com
+      documented: true
+      note: Descartes API portal for B2B connectivity and other product APIs; keys require sign-up/approval.
+    - protocol: Webhook
+      scheme: https
+      documented: true
+      note: MacroPoint POSTs Location Updates, Order Status Change, Trip Event Updates, and Form Submits to customer-hosted callback URLs. Server-to-endpoint HTTP, not WebSocket.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented on any Descartes public API surface as of the review date.
+  endpointsConfirmedRest:
+    - POST https://macropoint-lite.com/api/1.0/orders/createorder
+    - POST https://macropoint-lite.com/api/1.0/tms/data/location
+  endpointsModeled:
+    - Descartes MacroPoint Capacity Import/Export API operations (documented at capacitydocs.macropoint.com; exact paths provisioned per customer)
+    - Descartes MacroPoint Carrier Integration operations (documented at carrierdocs.macropoint.com and the macropoint-telematics Postman workspace)
+    - Descartes CustomsInfo Trade Content API operations (HS classification, tariff/duty, binding rulings; contract-provisioned)
+    - Descartes Datamyne Global Trade Data API operations (subscription/contract-provisioned)
+    - Descartes B2B API Connectivity operations over the Global Logistics Network (keys via api.descartes.com sign-up/approval)
+sources:
+  - url: https://docs.macropoint.com/
+    type: Documentation
+    note: MacroPoint Visibility customer integration guide. Base https://macropoint-lite.com/api/1.0, Basic auth, XML; createorder and location endpoints; four HTTP callback URLs.
+  - url: https://capacitydocs.macropoint.com/
+    type: Documentation
+    note: MacroPoint Capacity Integration - Import API and Export API for carrier matching.
+  - url: https://carrierdocs.macropoint.com/
+    type: Documentation
+    note: MacroPoint Visibility Carrier Integration - carrier-side location and event updates.
+  - url: https://www.postman.com/macropoint-telematics
+    type: PostmanWorkspace
+    note: Public Descartes/MacroPoint Postman workspace with carrier and capacity integration collections.
+  - url: https://api.descartes.com/
+    type: DeveloperPortal
+    note: Descartes API portal - browse APIs, sign in to try, sign up to acquire keys (gated).
+  - url: https://www.descartes.com/solutions/b2b-connectivity-and-messaging/api-connectivity
+    type: ProductPage
+    note: B2B API connectivity over the Global Logistics Network; real-time synchronous request/response, complements EDI.
+  - url: https://www.customsinfo.com/knowledge-center/trade-content-apis-streamlining-classification-and-enhancing-business-integration/
+    type: Documentation
+    note: CustomsInfo trade content APIs - HS classification, tariff/duty, regulatory content in JSON/XML; contact a trade content specialist.
+  - url: https://www.datamyne.com/our-product/global-trade-data-api/
+    type: ProductPage
+    note: Datamyne global trade data API - import/export and bill-of-lading data; subscription/contract.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists on any Descartes public API. The
+    documented APIs are request/response HTTP (MacroPoint XML over HTTPS with
+    Basic auth; portal/contract-provisioned REST for trade content, trade data,
+    and B2B connectivity). Asynchronous MacroPoint updates are delivered via
+    customer-hosted HTTP callbacks, not a server-push socket, so there is no
+    AsyncAPI document to author. Most surfaces are customer/partner-gated;
+    modeled endpoints are flagged rather than fabricated.
