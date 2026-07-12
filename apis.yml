@@ -166,6 +166,8 @@ apis:
     endpoints are modeled from the portal and product materials
     (endpointsModeled).
 common:
+- type: DomainSecurity
+  url: security/descartes-domain-security.yml
 - type: Website
   url: https://www.descartes.com
 - type: DeveloperPortal
