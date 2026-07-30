@@ -16,7 +16,19 @@ description: >-
   trade data, and B2B connectivity APIs are provisioned through the Descartes
   API portal or a sales/contract engagement. Most API access is
   customer/partner-gated rather than open self-service signup.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: approval
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Requires approval
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/descartes.png
 tags:
 - Logistics
 - Supply Chain
