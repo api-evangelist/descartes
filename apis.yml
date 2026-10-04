@@ -121,6 +121,7 @@ apis:
     Specific endpoint paths are modeled from the published guides
     (endpointsModeled). Access requires carrier/partner onboarding (gated).
 - aid: descartes:descartes-customsinfo-trade-content-api
+  endpointsModeled: true
   name: Descartes CustomsInfo Trade Content API
   tags:
   - Customs Compliance
@@ -144,6 +145,7 @@ apis:
     materials (endpointsModeled) and access is arranged via contract with a
     Descartes global trade content specialist (gated).
 - aid: descartes:descartes-datamyne-trade-data-api
+  endpointsModeled: true
   name: Descartes Datamyne Global Trade Data API
   tags:
   - Global Trade
