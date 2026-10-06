@@ -50,7 +50,7 @@ tags:
 - Trade Content
 - Carrier Sourcing
 created: '2026-07-05'
-modified: '2026-07-05'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: descartes:descartes-macropoint-visibility-api
@@ -191,6 +191,8 @@ apis:
     endpoints are modeled from the portal and product materials
     (endpointsModeled).
 common:
+- url: https://www.descartes.com/rss.xml
+  type: BlogRSS
 - type: DomainSecurity
   url: security/descartes-domain-security.yml
 - type: Website
