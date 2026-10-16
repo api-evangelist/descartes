@@ -1,0 +1,14 @@
+{
+  "repo": "descartes",
+  "feeds": [
+    {
+      "source": "https://www.descartes.com/rss.xml",
+      "feed_url": "https://www.descartes.com/rss.xml",
+      "title": "",
+      "saved": 2,
+      "method": "feed"
+    }
+  ],
+  "post_count": 2,
+  "fetched": "2026-10-10T13:15:00Z"
+}
