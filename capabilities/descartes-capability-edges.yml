@@ -1,0 +1,80 @@
+slug: descartes
+provider: Descartes Systems Group
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 6
+edges:
+- tag: API - XML
+  spec_file: descartes-api-xml-api-openapi.yml
+  capability_id: BC-2510.10
+  capability_id_l1: BC-2510
+  capability_name: Event Capture and Status Management
+  confidence: 0.85
+  evidence: POST /api/1.0/tms/data/location 'Location Update'; POST /api/1.0/tms/data/stopevent 'Event
+    Update'; POST /api/1.0/tms/data/shipmentstatus 'Enhanced Shipment Status'
+  reason: 'MacroPoint Visibility carrier integration: carriers push location pings, stop events and shipment
+    statuses into the visibility platform — canonical event capture and status management for shipment
+    tracking.'
+- tag: API - XML
+  spec_file: descartes-api-xml-api-openapi.yml
+  capability_id: BC-520.50
+  capability_id_l1: BC-520
+  capability_name: Logistics Operations Management
+  confidence: 0.8
+  evidence: '"Location Update", "Event Update", "Enhanced Shipment Status", "Tracking Assignment"'
+  reason: Carrier-side posting of location, stop events and shipment status for in-transit freight visibility
+    is transport execution and monitoring, squarely logistics operations. The tag name 'API - XML' is
+    a format label; the operations carry the meaning.
+- tag: 3rd Party TMS Integration
+  spec_file: descartes-3rd-party-tms-integration-api-openapi.yml
+  capability_id: BC-520.50
+  capability_id_l1: BC-520
+  capability_name: Logistics Operations Management
+  confidence: 0.75
+  evidence: '"Add an Offer", "TMS Accept Offer", "Rescind Load Offer"'
+  reason: Load-offer tendering between broker/shipper and logistics service providers via a TMS - i.e.
+    freight capacity offer and acceptance, which is transport execution within logistics operations. L2
+    Logistics Operations Management is the closest fit; confidence held below 0.8 because load tendering
+    also touches order fulfilment.
+- tag: Load Visibility Order Creation - XML
+  spec_file: descartes-load-visibility-order-creation-xml-api-openapi.yml
+  capability_id: BC-2510.20
+  capability_id_l1: BC-2510
+  capability_name: Shipment Tracking Management
+  confidence: 0.75
+  evidence: POST /api/1.0/orders/createorder 'Create Order'; POST /api/1.0/orders/stoporder/{orderId}
+    'Stop Order'
+  reason: Creates, changes and stops MacroPoint 'load visibility' tracking orders — the lifecycle of a
+    shipment tracking request, not a commercial transport order. Maps to shipment tracking management.
+- tag: 3rd Party TMS Integration
+  spec_file: descartes-3rd-party-tms-integration-api-openapi.yml
+  capability_id: BC-2450.20
+  capability_id_l1: BC-2450
+  capability_name: Carrier Procurement and Allocation Management
+  confidence: 0.72
+  evidence: PUT /api/v1/lspoffer  Add an Offer; GET /api/v1/lspoffer/tms/{lspId}/accept/{offerId}  TMS
+    Accept Offer; DELETE /api/v1/lspoffer/{offerId}  Rescind Load Offer
+  reason: MacroPoint Capacity load-offer endpoints let a TMS post, retrieve, accept and rescind load offers
+    to/from logistics service providers — i.e. tendering freight and securing carrier capacity. Best fits
+    Carrier Procurement and Allocation Management; some ambiguity with capacity booking (BC-2400.40) since
+    the offer lifecycle is viewed from the LSP side, hence moderate confidence.
+- tag: Load Visibility Order Creation - XML
+  spec_file: descartes-load-visibility-order-creation-xml-api-openapi.yml
+  capability_id: BC-520.50
+  capability_id_l1: BC-520
+  capability_name: Logistics Operations Management
+  confidence: 0.7
+  evidence: '"Create Order", "Change Order", "Stop Order" under /api/1.0/orders for Load Visibility'
+  reason: These 'orders' are freight tracking orders opened, amended and stopped to monitor a load in
+    transit, which is transport visibility within logistics operations. Confidence tempered because 'order'
+    could be read as fulfilment order management (BC-520.40).
