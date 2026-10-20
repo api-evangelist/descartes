@@ -1,0 +1,1452 @@
+# x-archived-from: descartes-macropoint-capacity-openapi.yml
+# x-archived-on: 2026-10-20
+openapi: 3.1.0
+info:
+  title: Descartes MacroPoint Capacity Integration API
+  version: latest
+  description: Converted mechanically from the Postman collection Descartes publishes at https://capacitydocs.macropoint.com/ (method, URL, query keys, example bodies). Responses are not described by the
+    collection.
+  contact:
+    name: Descartes MacroPoint
+    url: https://capacitydocs.macropoint.com/
+x-generated-from: postman-collection
+x-source: https://capacitydocs.macropoint.com/
+x-generated: '2026-10-20'
+servers:
+- url: https://capacity-offer-api.macropoint.com
+- url: https://dw-export-capacity.macropoint.com
+- url: https://import-capacity.macropoint.com
+security:
+- basicAuth: []
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+paths:
+  /api/v2/Carrier:
+    post:
+      operationId: postCarrier
+      summary: Carrier Import
+      tags:
+      - Import API
+      x-source: https://capacitydocs.macropoint.com/
+      responses:
+        '200':
+          description: Success
+      description: '<h1 id="carrier-import-api-request-allows-customers-to-post-complete-carrier-lists">Carrier Import API request allows customers to post complete carrier lists</h1>
+
+        <h1 id="request-structure">Request Structure</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Title</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>HTTP Method</td>
+
+        <td>POST</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Authentication</td>
+
+        <td>Basic Auth</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Content Type</td>
+
+        <td>APPLICATION/JSON</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Response Format</td>
+
+        <td>JSON</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Header</td>
+
+        <td>Encoded</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><h1 id="carrier-import-request-schema">Carrier Import Request Schema</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Name</th>
+
+        <th>Name Description</th>
+
+        <th>Value Example</th>
+
+        <th>Required</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td><a href="#status-tags">Status</a></td>
+
+        <td>Indicates carrier''s active status within company</td>
+
+        <td>Active</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        <tr>
+
+        <td>DOTNumber</td>
+
+        <td>Registered FMCSA USDOT number of carrier</td>
+
+        <td>123456</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        <tr>
+
+        <td>MCNumber</td>
+
+        <td>Registered FMCSA MC Number of carrier. Format: MC prefix required, six digit number required. If carrier has an MC number less than six digits leading zeros must prefix number</td>
+
+        <td>MC987654</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Name</td>
+
+        <td>Carrier name</td>
+
+        <td>Awesome Trucking Co.</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        <tr>
+
+        <td>OwnerName</td>
+
+        <td>Account '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+            example: "{\r\n  \"Carriers\": [\r\n    {\r\n      \"Status\": \"Active\",\r\n      \"DOTNumber\": \"1000877\",\r\n      \"MCNumber\": \"\",\r\n      \"Name\": \"PostMan Test\",\r\n      \"\
+              CarrierContact\": {\r\n        \"Name\": \"Post man\",\r\n        \"Email\": \"post@man.com\",\r\n        \"Phone\": \"123-456-789\",\r\n        \"PhoneExtension\": \"\"\r\n      },\r\n  \
+              \    \"OwnerName\": \"Eva\",\r\n      \"DNU\":\"no\",\r\n      \"Favorite\":\"no\"\r\n      },\r\n      {\r\n      \"Status\": \"Active\",\r\n      \"DOTNumber\": \"1000222\",\r\n      \"\
+              MCNumber\": \"\",\r\n      \"Name\": \"PostMan Test\",\r\n      \"CarrierContact\": {\r\n        \"Name\": \"Post man\",\r\n        \"Email\": \"post@man.com\",\r\n        \"Phone\": \"123-456-789\"\
+              ,\r\n        \"PhoneExtension\": \"\"\r\n      },\r\n      \"OwnerName\": \"Eva\",\r\n       \"DNU\":\"no\",\r\n      \"Favorite\":\"no\"\r\n    }\r\n  ],\r\n  \"SessionId\": \"\",\r\n  \"\
+              RequestId\": \"\"\r\n}"
+      servers:
+      - url: https://import-capacity.macropoint.com
+  /api/v2/Load:
+    post:
+      operationId: postLoad
+      summary: Load Import
+      tags:
+      - Import API
+      x-source: https://capacitydocs.macropoint.com/
+      responses:
+        '200':
+          description: Success
+      description: '<h1 id="load-import-api-request-allows-customers-to-post-all-load-types">Load Import API request allows customers to post all load types</h1>
+
+        <p>Load Types: Open, Booked, &amp; Delivered<br />The more information supplied the better the user experience</p>
+
+        <h1 id="request-structure">Request Structure</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Title</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>HTTP Method</td>
+
+        <td>POST</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Authentication</td>
+
+        <td>Basic Auth</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Content Type</td>
+
+        <td>APPLICATION/JSON</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Response Format</td>
+
+        <td>JSON</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Header</td>
+
+        <td>Encoded</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><h1 id="load-import-request-schema">Load Import Request Schema</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Name</th>
+
+        <th>Name Description</th>
+
+        <th>Format</th>
+
+        <th>Value Example</th>
+
+        <th>Required</th>
+
+        <th><strong>Character limit</strong>  <br />*Denotes truncation</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>LoadID</td>
+
+        <td>Customer unique load identifer</td>
+
+        <td>String</td>
+
+        <td>123456</td>
+
+        <td>Yes</td>
+
+        <td></td>
+
+        </tr>
+
+        <tr>
+
+        <td>StopNumber</td>
+
+        <td>The unique Stop Number for a multleg shipment. Each leg of the shipment should include an origin and destination.</td>
+
+        <td>Number</td>
+
+        <td>1</td>
+
+        <td>No</td>
+
+        <td></td>
+
+        </tr>
+
+        <tr>
+
+        <td>MPLoadID</td>
+
+        <td>Descartes MacroPoint Visilbity MPOrderID used for tracking</td>
+
+        <td>String</td>
+
+        <td>FB93D3FE54674'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+            example: "{\r\n  \"Loads\": [\r\n    {\r\n      \"LoadId\": \"SampleLoadID\",\r\n      \"StopNumber\": 1, \r\n      \"MPLoadId\": \"\",\r\n       \"Origin\": {\r\n        \"Street1\": \"6050\
+              \ Oak Tree Blvd\",\r\n        \"City\": \"Independence\",\r\n        \"State\": \"OH\",\r\n        \"Postal\": \"44131\",\r\n        \"Country\": \"US\",\r\n        \"Latitude\": 41.39699,\r\
+              \n        \"Longitude\": -81.66259,\r\n        \"DateTime\": \"2025-09-18T13:00:00\",\r\n        \"EndDateTime\": \"2025-09-18T13:00:00\"\r\n      },\r\n      \"Destination\": {\r\n      \
+              \   \"Street1\": \"120 Randall Dr\",\r\n        \"City\": \"Waterloo\",\r\n        \"State\": \"ON\",\r\n        \"Postal\": \"N2V 1C6\",\r\n        \"Country\": \"CA\",\r\n        \"Latitude\"\
+              : 43.50570,\r\n        \"Longitude\": -80.55289,\r\n        \"DateTime\": \"2025-09-19T14:00:00\",\r\n        \"EndDateTime\": \"2025-09-19T15:00:00\"\r\n      },\r\n      \"Miles\": 310,\r\
+              \n      \"EquipmentTypes\": [\r\n        \"Reefer\"\r\n      ],\r\n      \"CoverageRegion\": \"Midwest\",\r\n      \"Commodity\": \"Fresh Food\",\r\n      \"SuggestedMarketRate\": 1000,\r\n\
+              \      \"MaxBuyRate\": 1500,\r\n      \"CarrierDOTNumber\": \"\",\r\n      \"MCNumber\": \"\",\r\n      \"TruckIdentifier\": \"\",\r\n      \"RatePerMileExcludingFuel\": 0,\r\n      \"ItemizedStandardAccessorialCharges\"\
+              : 0,\r\n      \"DeliveredDateTime\": \"\",\r\n      \"Weight\": \"40000\",\r\n      \"DropTrailerAtOrigin\": false,\r\n      \"DropTrailerAtDestination\": false,\r\n      \"Hazmat\": false,\r\
+              \n      \"HazmatType\": \"\",\r\n      \"TSACert\": false,\r\n      \"TWICRequired\": false,\r\n      \"CTPATCert\": false,\r\n      \"BlockingAndBracing\": true,\r\n      \"BlockingAndBracingType\"\
+              : \"\",\r\n      \"LoadDetails\": \"Clean, dry trailer\",\r\n      \"Status\": \"Available\",\r\n      \"ChildCompanyCode\": \"\",\r\n      \"OwnerName\": \"Rep Name\",\r\n      \"OwnerEmail\"\
+              : \"Rep Email\",\r\n      \"OwnerPhone\": \"Rep Phone\"\r\n    }\r\n  ],\r\n  \"SessionId\": \"\",\r\n  \"RequestId\": \"\"\r\n}"
+      servers:
+      - url: https://import-capacity.macropoint.com
+  /api/v3/LSPFindPowerExportV3:
+    get:
+      operationId: getLSPFindPowerExportV3
+      summary: Find Power
+      tags:
+      - Export API
+      x-source: https://capacitydocs.macropoint.com/
+      x-postman-examples:
+      - Find Power
+      - Single Carrier Statistics
+      responses:
+        '200':
+          description: Success
+      description: '<p>The Find Power API allows for companies to receive a listing of top carriers ranked based on the lane and projected open capacity of the shipment. Additional parameters can be sent
+        on the call allowing to factor in expanded radiuses, extended history, sub equipment, and expanded hours around appointment times to open the search to a wider carrier pool.</p>
+
+        <p>Production: <a href="https://dw-export-capacity.macropoint.com/api/v3/LSPFindPowerExportV3">https://dw-export-capacity.macropoint.com/api/v3/LSPFindPowerExportV3</a></p>
+
+        <h1 id="request-structure">Request Structure</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Title</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>HTTP Method</td>
+
+        <td>GET</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Authentication</td>
+
+        <td>Basic Auth</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Content Type</td>
+
+        <td>APPLICATION/JSON</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Response Format</td>
+
+        <td>JSON</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Header</td>
+
+        <td>Encoded</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><h2 id="response-schema">Response Schema</h2>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th><strong>Name</strong></th>
+
+        <th><strong>Name Description</strong></th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td><strong>AvgRatePerMile</strong></td>
+
+        <td>The average rate per mile (excluding fuel) across all carriers in the Find Power results if included on Import API</td>
+
+        </tr>
+
+        <tr>
+
+        <td><strong>Carriers</strong></td>
+
+        <td>The list of carriers ranked in order of best match for the open lo'
+      servers:
+      - url: https://dw-export-capacity.macropoint.com
+  /api/v3/LSPHistoryExportV3:
+    get:
+      operationId: getLSPHistoryExportV3
+      summary: Lane History Search
+      tags:
+      - Search API
+      x-source: https://capacitydocs.macropoint.com/
+      x-postman-examples:
+      - Lane History Search
+      - Lane History Search - Single Carrier Detailed Statistics
+      responses:
+        '200':
+          description: Success
+      description: '<p>The Export Search History request allows customers to request historical detailed statistics on a specified lane.</p>
+
+        <p><strong>Production</strong>: <a href="https://dw-export-capacity.macropoint.com/api/v3/LSPHistoryExportV3">https://dw-export-capacity.macropoint.com/api/v3/LSPHistoryExportV3</a></p>
+
+        <h1 id="request-structure">Request Structure</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th><strong>Title</strong></th>
+
+        <th><strong>Description</strong></th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>HTTP Method</td>
+
+        <td>GET</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Authentication</td>
+
+        <td>Basic Auth</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Content Type</td>
+
+        <td>APPLICATION/JSON</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Response Format</td>
+
+        <td>JSON</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Header</td>
+
+        <td>Encoded</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><h1 id="export-history-query-params"><strong>Export History Query Params</strong></h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th><strong>Key</strong></th>
+
+        <th><strong>Value</strong></th>
+
+        <th><strong>Description</strong></th>
+
+        <th><strong>Required</strong></th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>request.origin.city</td>
+
+        <td>Origin City</td>
+
+        <td>Origin City</td>
+
+        <td>Yes  <br />  <br />City and State Required if Postal Code is not passed</td>
+
+        </tr>
+
+        <tr>
+
+        <td>request.origin.state</td>
+
+        <td>Origin State</td>
+
+        <td>Origin State</td>
+
+        <td>Yes  <br />  <br />City and State Required if Postal Code is not passed</td>
+
+        </tr>
+
+        <tr>
+
+        <td>request.origin.postal</td>
+
+        <td>Origin Po'
+      servers:
+      - url: https://dw-export-capacity.macropoint.com
+  /api/v1/lspoffer:
+    put:
+      operationId: putLspoffer
+      summary: Add an Offer
+      tags:
+      - 3rd Party TMS Integration
+      x-source: https://capacitydocs.macropoint.com/
+      x-postman-examples:
+      - Add an Offer
+      - Add an Offer
+      responses:
+        '200':
+          description: Success
+      description: '<h4 id="the-add-an-offer-api-provides-the-customer-or-tms-the-ability-to-add-an-offer-for-an-open-load-that-have-been-sent-to-the-macropoint-capacity-product">The Add an Offer API provides
+        the Customer or TMS the ability to add an offer for an open load that have been sent to the MacroPoint Capacity product</h4>
+
+        <p><strong>Requirements:</strong></p>
+
+        <ul>
+
+        <li>The Load must be open in the MacroPoint Capacity Product</li>
+
+        </ul>
+
+        <p><strong>Request Structure</strong></p>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th><strong>Title</strong></th>
+
+        <th><strong>Description</strong></th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>HTTP Method</td>
+
+        <td>GET</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Authentication</td>
+
+        <td>Basic Auth</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Content Type</td>
+
+        <td>APPLICATION/JSON</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Response Format</td>
+
+        <td>JSON</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Header</td>
+
+        <td>Encoded</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><p><strong>Request Schema:</strong></p>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th><strong>Name</strong></th>
+
+        <th><strong>Name Description</strong></th>
+
+        <th><strong>Value Example</strong></th>
+
+        <th><strong>Required</strong></th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>loadId</td>
+
+        <td>The Brokers LoadID provided on the original Load Import</td>
+
+        <td>Load123</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        <tr>
+
+        <td>carrierDot</td>
+
+        <td>The Carrier DOT associated to the offer</td>
+
+        <td>789456</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        <tr>
+
+        <td>equipment</td>
+
+        <td>Equipment will be one of the following'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+            example: "{\n  \"loadId\": \"SampleLoadID\",\n  \"carrierDot\": \"0000000\",\n  \"equipment\": \"Reefer\",\n  \"subEquipemnt\": \"\",\n  \"note\": \"Note\",\n  \"Rate\": 1000,\n  \"LimitRate\"\
+              : 1500,\n  \"ChildCompany\":\"NW Ohio\"\n}\n"
+      servers:
+      - url: https://capacity-offer-api.macropoint.com
+  /api/v1/lspoffer/tms/{lspId}/{offerId}:
+    get:
+      operationId: getLspofferTmsLspIdOfferId
+      summary: TMS Single Load Offer Details
+      tags:
+      - 3rd Party TMS Integration
+      x-source: https://capacitydocs.macropoint.com/
+      responses:
+        '200':
+          description: Success
+      description: '<h4 id="the-tms-single-offer-details-api-provides-the-tms-the-ability-get-offer-details-for-a-specified-open-load-that-has-been-sent-to-the-macropoint-capacity-product">The TMS Single
+        Offer Details API provides the TMS the ability get offer details for a specified open load that has been sent to the MacroPoint Capacity product</h4>
+
+        <p><strong>Requirements:</strong></p>
+
+        <ul>
+
+        <li><p>The Load must be open in the MacroPoint Capacity Product</p>
+
+        </li>
+
+        <li><p>An original offer must be created either via the Broker or Carrier.</p>
+
+        <ul>
+
+        <li>If there are no open offers on a load, a blank 200 OK response be received</li>
+
+        </ul>
+
+        </li>
+
+        <li><p>The LSP is required in the GET Request</p>
+
+        </li>
+
+        </ul>
+
+        <p><strong>Request Structure</strong></p>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th><strong>Title</strong></th>
+
+        <th><strong>Description</strong></th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>HTTP Method</td>
+
+        <td>GET</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Authentication</td>
+
+        <td>Basic Auth</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Content Type</td>
+
+        <td>APPLICATION/JSON</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Response Format</td>
+
+        <td>JSON</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Header</td>
+
+        <td>Encoded</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><p><strong>Request Example:</strong></p>
+
+        <p><a href="https://capacity-offer-api.macropoint.com/api/v1/lspoffer/tms/123456/12345678">https://capacity-offer-api.macropoint.com/api/v1/lspoffer/tms/123456/12345678</a></p>
+
+        <p><strong>Response Schema:</strong></p>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>'
+      parameters:
+      - name: lspId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: offerId
+        in: path
+        required: true
+        schema:
+          type: string
+      servers:
+      - url: https://capacity-offer-api.macropoint.com
+  /api/v1/lspoffer/tms/{lspId}:
+    get:
+      operationId: getLspofferTmsLspId
+      summary: TMS All Offer Details by LSP
+      tags:
+      - 3rd Party TMS Integration
+      x-source: https://capacitydocs.macropoint.com/
+      responses:
+        '200':
+          description: Success
+      description: '<h4 id="the-tms-all-offer-details-by-lsp-api-provides-the-tms-the-ability-get-offer-details-for-all-open-loads-by-customer-that-have-been-sent-to-the-macropoint-capacity-product">The
+        TMS All Offer Details by LSP API provides the TMS the ability get offer details for all open loads by customer that have been sent to the MacroPoint Capacity product</h4>
+
+        <p><strong>Requirements:</strong></p>
+
+        <ul>
+
+        <li><p>The Load must be open in the MacroPoint Capacity Product</p>
+
+        </li>
+
+        <li><p>An original offer must be created either via the Broker or Carrier.</p>
+
+        <ul>
+
+        <li>If there are no open offers on a load, a blank 200 OK response be received</li>
+
+        </ul>
+
+        </li>
+
+        <li><p>The LSP is required in the GET Request</p>
+
+        </li>
+
+        </ul>
+
+        <p><strong>Request Structure</strong></p>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th><strong>Title</strong></th>
+
+        <th><strong>Description</strong></th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>HTTP Method</td>
+
+        <td>GET</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Authentication</td>
+
+        <td>Basic Auth</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Content Type</td>
+
+        <td>APPLICATION/JSON</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Response Format</td>
+
+        <td>JSON</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Header</td>
+
+        <td>Encoded</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><p><strong>Request Example:</strong></p>
+
+        <p><a href="https://capacity-offer-api.macropoint.com/api/v1/lspoffer/tms/123456/123.4452">https://capacity-offer-api.macropoint.com/api/v1/lspoffer/tms/123456/123.4452</a></p>
+
+        <p><strong>Response Schema:</strong></p>
+
+        <div class="click-to-expand-wrapper is-ta'
+      parameters:
+      - name: lspId
+        in: path
+        required: true
+        schema:
+          type: string
+      servers:
+      - url: https://capacity-offer-api.macropoint.com
+  /api/v1/lspoffer/tms/{lspId}/accept/{offerId}:
+    get:
+      operationId: getLspofferTmsLspIdAcceptOfferId
+      summary: TMS Accept Offer
+      tags:
+      - 3rd Party TMS Integration
+      x-source: https://capacitydocs.macropoint.com/
+      responses:
+        '200':
+          description: Success
+      description: '<h4 id="the-tms-accept-offer-api-provides-the-tms-the-ability-to-accept-an-offer-by-customer-offerid-via-the-macropoint-capacity-product">The TMS Accept Offer API provides the TMS the
+        ability to accept an offer by Customer OfferID via the MacroPoint Capacity product.</h4>
+
+        <p><strong>Requirements:</strong></p>
+
+        <ul>
+
+        <li><p>The Load must be open in the MacroPoint Capacity Product</p>
+
+        </li>
+
+        <li><p>An original offer must be created either via the Broker or Carrier</p>
+
+        </li>
+
+        <li><p>The LSP and OfferID are required in the GET Request</p>
+
+        </li>
+
+        </ul>
+
+        <p>Once the load has been sent to the Descartes MacroPoint Capacity product as accepted, the customer should follow their normal booking process within their TMS to secure the carrier on the load.</p>
+
+        <p><strong>Request Structure</strong></p>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th><strong>Title</strong></th>
+
+        <th><strong>Description</strong></th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>HTTP Method</td>
+
+        <td>GET</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Authentication</td>
+
+        <td>Basic Auth</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Content Type</td>
+
+        <td>APPLICATION/JSON</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Response Format</td>
+
+        <td>JSON</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Header</td>
+
+        <td>Encoded</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><p><strong>Request Example:</strong></p>
+
+        <p><a href="https://"></a><a href="https://capacity-offer-api.macropoint.com/api/v1/lspoffer/tms/123456/accept/">https://capacity-offer-api.macropoint.com/api/v1/lspoffer/tms/123456/accept/</a>123.4452</p>
+
+        <p><strong>Respo'
+      parameters:
+      - name: lspId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: offerId
+        in: path
+        required: true
+        schema:
+          type: string
+      servers:
+      - url: https://capacity-offer-api.macropoint.com
+  /api/v1/lspoffer/{offerId}:
+    delete:
+      operationId: deleteLspofferOfferId
+      summary: Rescind Load Offer
+      tags:
+      - 3rd Party TMS Integration
+      x-source: https://capacitydocs.macropoint.com/
+      x-postman-examples:
+      - Rescind Load Offer
+      - Rescind Load Offer
+      responses:
+        '200':
+          description: Success
+      description: '<h4 id="the-rescind-offer-api-provides-the-customer-or-tms-the-ability-to-rescind-an-offer-by-customer-offerid-via-the-macropoint-capacity-product">The Rescind Offer API provides the
+        Customer or TMS the ability to rescind an offer by Customer OfferID via the MacroPoint Capacity product.</h4>
+
+        <p><strong>Requirements:</strong></p>
+
+        <ul>
+
+        <li><p>The Load must be open in the MacroPoint Capacity Product</p>
+
+        </li>
+
+        <li><p>An original offer must be created either via the Broker or Carrier</p>
+
+        </li>
+
+        <li><p>The OfferID is required in the DEL request</p>
+
+        </li>
+
+        </ul>
+
+        <p><strong>Request Structure</strong></p>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th><strong>Title</strong></th>
+
+        <th><strong>Description</strong></th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>HTTP Method</td>
+
+        <td>GET</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Authentication</td>
+
+        <td>Basic Auth</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Content Type</td>
+
+        <td>APPLICATION/JSON</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Response Format</td>
+
+        <td>JSON</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Header</td>
+
+        <td>Encoded</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><p><strong>Request Example:</strong></p>
+
+        <p><a href="https://capacity-offer-api.macropoint.com/api/v1/lspoffer/">https://capacity-offer-api.macropoint.com/api/v1/lspoffer/</a></p>
+
+        <p><strong>Response Codes:</strong></p>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th><strong>Code</strong></th>
+
+        <th><strong>Description</strong></th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>204</td>
+
+        <td>Offer Successfully Resinded</td>
+
+        </tr>
+
+        <tr>
+
+        '
+      parameters:
+      - name: offerId
+        in: path
+        required: true
+        schema:
+          type: string
+      servers:
+      - url: https://capacity-offer-api.macropoint.com
+    get:
+      operationId: getLspofferOfferId
+      summary: Details about an Offer
+      tags:
+      - Custom Integration
+      x-source: https://capacitydocs.macropoint.com/
+      responses:
+        '200':
+          description: Success
+      description: '<h4 id="the-details-about-an-offer-api-provides-the-customer-the-ability-get-offer-details-for-a-specified-open-load-that-has-been-sent-to-the-macropoint-capacity-product">The Details
+        about an Offer API provides the Customer the ability get offer details for a specified open load that has been sent to the MacroPoint Capacity product</h4>
+
+        <p><strong>Requirements:</strong></p>
+
+        <ul>
+
+        <li><p>The Load must be open in the MacroPoint Capacity Product</p>
+
+        </li>
+
+        <li><p>An original offer must be created either via the Broker or Carrier.</p>
+
+        <ul>
+
+        <li>If there are no open offers on a load, a blank 200 OK response be received</li>
+
+        </ul>
+
+        </li>
+
+        <li><p>The Offer ID is required in the GET Request</p>
+
+        </li>
+
+        </ul>
+
+        <p><strong>Request Structure</strong></p>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th><strong>Title</strong></th>
+
+        <th><strong>Description</strong></th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>HTTP Method</td>
+
+        <td>GET</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Authentication</td>
+
+        <td>Basic Auth</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Content Type</td>
+
+        <td>APPLICATION/JSON</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Response Format</td>
+
+        <td>JSON</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Header</td>
+
+        <td>Encoded</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><p><strong>Request Example:</strong></p>
+
+        <p><a href="https://capacity-offer-api.macropoint.com/api/v1/lspoffer/12345678">https://capacity-offer-api.macropoint.com/api/v1/lspoffer/12345678</a></p>
+
+        <p><strong>Response Schema:</strong></p>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <t'
+      parameters:
+      - name: offerId
+        in: path
+        required: true
+        schema:
+          type: string
+      servers:
+      - url: https://capacity-offer-api.macropoint.com
+  /api/v1/lspoffer/accept/{offerId}:
+    get:
+      operationId: getLspofferAcceptOfferId
+      summary: Accept Offer
+      tags:
+      - Custom Integration
+      x-source: https://capacitydocs.macropoint.com/
+      responses:
+        '200':
+          description: Success
+      description: '<h4 id="the-accept-offer-api-provides-the-customer-the-ability-to-accept-an-offer-via-the-macropoint-capacity-product">The Accept Offer API provides the Customer the ability to accept
+        an offer via the MacroPoint Capacity product.</h4>
+
+        <p><strong>Requirements:</strong></p>
+
+        <ul>
+
+        <li><p>The Load must be open in the MacroPoint Capacity Product</p>
+
+        </li>
+
+        <li><p>An original offer must be created either via the Broker or Carrier</p>
+
+        </li>
+
+        <li><p>The OfferID is required in the GET Request</p>
+
+        </li>
+
+        </ul>
+
+        <p>Once the load has been sent to the Descartes MacroPoint Capacity product as accepted, the customer should follow their normal booking process within their TMS to secure the carrier on the load.</p>
+
+        <p><strong>Request Structure</strong></p>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th><strong>Title</strong></th>
+
+        <th><strong>Description</strong></th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>HTTP Method</td>
+
+        <td>GET</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Authentication</td>
+
+        <td>Basic Auth</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Content Type</td>
+
+        <td>APPLICATION/JSON</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Response Format</td>
+
+        <td>JSON</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Header</td>
+
+        <td>Encoded</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><p><strong>Request Example:</strong></p>
+
+        <p><a href="https://capacity-offer-api.macropoint.com/api/v1/lspoffer/accept/12345678">https://capacity-offer-api.macropoint.com/api/v1/lspoffer/accept/12345678</a></p>
+
+        <p><strong>Response Schema:</strong></p>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><tabl'
+      parameters:
+      - name: offerId
+        in: path
+        required: true
+        schema:
+          type: string
+      servers:
+      - url: https://capacity-offer-api.macropoint.com
+x-customer-callbacks:
+- Offer Callback

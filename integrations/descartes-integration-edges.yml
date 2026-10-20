@@ -1,12 +1,24 @@
-generated: '2026-10-14'
+generated: '2026-10-20'
 method: searched
+source:
+- geotab/integrations/geotab-integration-edges.yml
+- https://zapier.com/apps/descartes/integrations
+- https://zapier.com/apps/descartes-systems-group/integrations
+- https://n8n.io/integrations/descartes/
+- https://composio.dev/toolkits/descartes
+- https://monid.ai/tools/descartes
 checked:
 - geotab/integrations/geotab-integration-edges.yml
 - https://peppol.org/members/peppol-certified-service-providers/
 - https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees
 - https://www.streamlinedsalestax.org/certified-service-providers/certified-service-providers-list
-source:
-- geotab/integrations/geotab-integration-edges.yml
+- https://composio.dev/toolkits/descartes
+- https://monid.ai/tools/descartes
+- https://n8n.io/integrations/descartes/
+- https://zapier.com/apps/descartes-systems-group/integrations
+- https://zapier.com/apps/descartes/integrations
+summary: null
+marketplace_apps: []
 edges:
 - partner_name: Geotab (own)
   partner: geotab
@@ -82,3 +94,4 @@ edges:
     detected: '2026-10-15'
   detected_by: sweep-einvoicing-tax.py
   first_seen: '2026-10-15'
+templates: []

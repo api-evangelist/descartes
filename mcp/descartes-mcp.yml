@@ -1,0 +1,136 @@
+generated: '2026-10-20'
+method: derived
+generator: derive-mcp-candidate.py
+source:
+- openapi/descartes-macropoint-capacity-openapi.yml
+- openapi/descartes-macropoint-carrier-openapi.yml
+- openapi/descartes-macropoint-visibility-openapi.yml
+status: candidate
+deployment:
+  mode: none
+  auth: unknown
+  verified: probed
+note: No MCP server was found. The pre-flight posted tools/list to /mcp on api.descartes.com, api.macropoint-lite.com, api.macropoint.com, api.customsinfo.com;
+  verdict absent. Candidate tools below are derived from the 24 operation(s) in the provider's own OpenAPI (24 listed); they describe what a server
+  WOULD expose, not one that exists.
+tools:
+- name: post_carrier
+  operationId: postCarrier
+  method: POST
+  path: /api/v2/Carrier
+  description: Carrier Import
+- name: post_tms_data_location
+  operationId: postTmsDataLocation
+  method: POST
+  path: /api/1.0/tms/data/location
+  description: Location Update
+- name: post_orders_createorder
+  operationId: postOrdersCreateorder
+  method: POST
+  path: /api/1.0/orders/createorder
+  description: Create Order
+- name: post_load
+  operationId: postLoad
+  method: POST
+  path: /api/v2/Load
+  description: Load Import
+- name: post_tms_data_stopevent
+  operationId: postTmsDataStopevent
+  method: POST
+  path: /api/1.0/tms/data/stopevent
+  description: Event Update
+- name: post_orders_changeorder_order_id
+  operationId: postOrdersChangeorderOrderId
+  method: POST
+  path: /api/1.0/orders/changeorder/{orderId}
+  description: Change Order
+- name: get_lspfind_power_export_v3
+  operationId: getLSPFindPowerExportV3
+  method: GET
+  path: /api/v3/LSPFindPowerExportV3
+  description: Find Power
+- name: post_order_trackingnumberassignment
+  operationId: postOrderTrackingnumberassignment
+  method: POST
+  path: /api/1.0/order/trackingnumberassignment
+  description: Tracking Assignment
+- name: post_orders_stoporder_order_id
+  operationId: postOrdersStoporderOrderId
+  method: POST
+  path: /api/1.0/orders/stoporder/{orderId}
+  description: Stop Order
+- name: get_lsphistory_export_v3
+  operationId: getLSPHistoryExportV3
+  method: GET
+  path: /api/v3/LSPHistoryExportV3
+  description: Lane History Search
+- name: post_tms_data_shipmentstatus
+  operationId: postTmsDataShipmentstatus
+  method: POST
+  path: /api/1.0/tms/data/shipmentstatus
+  description: Enhanced Shipment Status
+- name: post_tms_data_tmsgateway
+  operationId: postTmsDataTmsgateway
+  method: POST
+  path: /api/1.0/tms/data/tmsgateway
+  description: Order Hyperlink
+- name: put_lspoffer
+  operationId: putLspoffer
+  method: PUT
+  path: /api/v1/lspoffer
+  description: Add an Offer
+- name: post_tmsdata_form_upload
+  operationId: postTMSDataFormUpload
+  method: POST
+  path: /api/1.0/TMS/Data/FormUpload
+  description: Form/Document Upload
+- name: post_carrier_carrierwishlist
+  operationId: postCarrierCarrierwishlist
+  method: POST
+  path: /api/1.0/carrier/carrierwishlist
+  description: Carrier Wishlist
+- name: get_lspoffer_tms_lsp_id_offer_id
+  operationId: getLspofferTmsLspIdOfferId
+  method: GET
+  path: /api/v1/lspoffer/tms/{lspId}/{offerId}
+  description: TMS Single Load Offer Details
+- name: get_carrier_requestpartnerstatus_carrier_id
+  operationId: getCarrierRequestpartnerstatusCarrierID
+  method: GET
+  path: /api/1.0/carrier/requestpartnerstatus/{CarrierID}
+  description: Good Truck API
+- name: get_lspoffer_tms_lsp_id
+  operationId: getLspofferTmsLspId
+  method: GET
+  path: /api/v1/lspoffer/tms/{lspId}
+  description: TMS All Offer Details by LSP
+- name: post_orders_send_message
+  operationId: postOrdersSendMessage
+  method: POST
+  path: /api/1.0/orders/SendMessage
+  description: Send Message
+- name: get_lspoffer_tms_lsp_id_accept_offer_id
+  operationId: getLspofferTmsLspIdAcceptOfferId
+  method: GET
+  path: /api/v1/lspoffer/tms/{lspId}/accept/{offerId}
+  description: TMS Accept Offer
+- name: post_fraudguard
+  operationId: postFraudguard
+  method: POST
+  path: /api/1.0/fraudguard
+  description: FraudGuard DOT
+- name: delete_lspoffer_offer_id
+  operationId: deleteLspofferOfferId
+  method: DELETE
+  path: /api/v1/lspoffer/{offerId}
+  description: Rescind Load Offer
+- name: get_lspoffer_offer_id
+  operationId: getLspofferOfferId
+  method: GET
+  path: /api/v1/lspoffer/{offerId}
+  description: Details about an Offer
+- name: get_lspoffer_accept_offer_id
+  operationId: getLspofferAcceptOfferId
+  method: GET
+  path: /api/v1/lspoffer/accept/{offerId}
+  description: Accept Offer

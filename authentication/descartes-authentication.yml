@@ -1,0 +1,16 @@
+name: Descartes MacroPoint authentication
+generated: '2026-10-20'
+method: searched
+source: https://docs.macropoint.com/
+docs: https://docs.macropoint.com/
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  applies_to: Customer to Descartes MacroPoint APIs (macropoint-lite.com/api/1.0) and carrier integration APIs
+  evidence: "API Base Configuration — Base URL: https://macropoint-lite.com/api/1.0/ Authentication: Basic"
+- name: callbackAuth
+  type: http-or-oauth2
+  direction: outbound (Descartes MacroPoint to customer webhook callbacks)
+  evidence: "Authentication: Basic or Oauth. Oauth requires a token URL, Client ID, Client Secret, Grant Type, and optional Scope"
+note: Credentials are issued to MacroPoint customers and carriers; there is no self-service key signup.

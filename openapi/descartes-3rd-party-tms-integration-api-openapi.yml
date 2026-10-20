@@ -1,0 +1,450 @@
+openapi: 3.2.0
+info:
+  title: Descartes MacroPoint Capacity Integration 3rd Party TMS…
+  version: latest
+  description: Converted mechanically from the Postman collection Descartes publishes at https://capacitydocs.macropoint.com/ (method, URL, query keys, example bodies). Responses are not described by the collection.
+  contact:
+    name: Descartes MacroPoint
+    url: https://capacitydocs.macropoint.com/
+servers:
+- url: https://capacity-offer-api.macropoint.com
+- url: https://dw-export-capacity.macropoint.com
+- url: https://import-capacity.macropoint.com
+security:
+- basicAuth: []
+tags:
+- name: 3rd Party TMS Integration
+paths:
+  /api/v1/lspoffer:
+    put:
+      operationId: putLspoffer
+      summary: Add an Offer
+      tags:
+      - 3rd Party TMS Integration
+      x-source: https://capacitydocs.macropoint.com/
+      x-postman-examples:
+      - Add an Offer
+      - Add an Offer
+      responses:
+        '200':
+          description: Success
+      description: 'The Add an Offer API provides the Customer or TMS the ability to add an offer for an open load that have been sent to the MacroPoint Capacity product
+
+
+        Requirements:
+
+
+        The Load must be open in the MacroPoint Capacity Product
+
+
+        Request Structure
+
+
+        Title
+
+        Description
+
+
+        HTTP Method
+
+        GET
+
+
+        Authentication
+
+        Basic Auth
+
+
+        Content Type
+
+        APPLICATION/JSON
+
+
+        Response Format
+
+        JSON
+
+
+        Header
+
+        Encoded
+
+
+        Request Schema:
+
+
+        Name
+
+        Name Description
+
+        Value Example
+
+        Required
+
+
+        loadId
+
+        The Brokers LoadID provided on the original Load Import
+
+        Load123
+
+        Yes
+
+
+        carrierDot
+
+        The Carrier DOT associated to the offer
+
+        789456
+
+        Yes
+
+
+        equipment
+
+        Equipment will be one of the following'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+            example: "{\n  \"loadId\": \"SampleLoadID\",\n  \"carrierDot\": \"0000000\",\n  \"equipment\": \"Reefer\",\n  \"subEquipemnt\": \"\",\n  \"note\": \"Note\",\n  \"Rate\": 1000,\n  \"LimitRate\": 1500,\n  \"ChildCompany\":\"NW Ohio\"\n}\n"
+      servers:
+      - url: https://capacity-offer-api.macropoint.com
+  /api/v1/lspoffer/tms/{lspId}/{offerId}:
+    get:
+      operationId: getLspofferTmsLspIdOfferId
+      summary: TMS Single Load Offer Details
+      tags:
+      - 3rd Party TMS Integration
+      x-source: https://capacitydocs.macropoint.com/
+      responses:
+        '200':
+          description: Success
+      description: 'The TMS Single Offer Details API provides the TMS the ability get offer details for a specified open load that has been sent to the MacroPoint Capacity product
+
+
+        Requirements:
+
+
+        The Load must be open in the MacroPoint Capacity Product
+
+
+        An original offer must be created either via the Broker or Carrier.
+
+
+        If there are no open offers on a load, a blank 200 OK response be received
+
+
+        The LSP is required in the GET Request
+
+
+        Request Structure
+
+
+        Title
+
+        Description
+
+
+        HTTP Method
+
+        GET
+
+
+        Authentication
+
+        Basic Auth
+
+
+        Content Type
+
+        APPLICATION/JSON
+
+
+        Response Format
+
+        JSON
+
+
+        Header
+
+        Encoded
+
+
+        Request Example:
+
+
+        https://capacity-offer-api.macropoint.com/api/v1/lspoffer/tms/123456/12345678
+
+
+        Response Schema:'
+      parameters:
+      - name: lspId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: offerId
+        in: path
+        required: true
+        schema:
+          type: string
+      servers:
+      - url: https://capacity-offer-api.macropoint.com
+  /api/v1/lspoffer/tms/{lspId}:
+    get:
+      operationId: getLspofferTmsLspId
+      summary: TMS All Offer Details by LSP
+      tags:
+      - 3rd Party TMS Integration
+      x-source: https://capacitydocs.macropoint.com/
+      responses:
+        '200':
+          description: Success
+      description: 'The TMS All Offer Details by LSP API provides the TMS the ability get offer details for all open loads by customer that have been sent to the MacroPoint Capacity product
+
+
+        Requirements:
+
+
+        The Load must be open in the MacroPoint Capacity Product
+
+
+        An original offer must be created either via the Broker or Carrier.
+
+
+        If there are no open offers on a load, a blank 200 OK response be received
+
+
+        The LSP is required in the GET Request
+
+
+        Request Structure
+
+
+        Title
+
+        Description
+
+
+        HTTP Method
+
+        GET
+
+
+        Authentication
+
+        Basic Auth
+
+
+        Content Type
+
+        APPLICATION/JSON
+
+
+        Response Format
+
+        JSON
+
+
+        Header
+
+        Encoded
+
+
+        Request Example:
+
+
+        https://capacity-offer-api.macropoint.com/api/v1/lspoffer/tms/123456/123.4452
+
+
+        Response Schema:
+
+
+        <div class="click-to-expand-wrapper is-ta'
+      parameters:
+      - name: lspId
+        in: path
+        required: true
+        schema:
+          type: string
+      servers:
+      - url: https://capacity-offer-api.macropoint.com
+  /api/v1/lspoffer/tms/{lspId}/accept/{offerId}:
+    get:
+      operationId: getLspofferTmsLspIdAcceptOfferId
+      summary: TMS Accept Offer
+      tags:
+      - 3rd Party TMS Integration
+      x-source: https://capacitydocs.macropoint.com/
+      responses:
+        '200':
+          description: Success
+      description: 'The TMS Accept Offer API provides the TMS the ability to accept an offer by Customer OfferID via the MacroPoint Capacity product.
+
+
+        Requirements:
+
+
+        The Load must be open in the MacroPoint Capacity Product
+
+
+        An original offer must be created either via the Broker or Carrier
+
+
+        The LSP and OfferID are required in the GET Request
+
+
+        Once the load has been sent to the Descartes MacroPoint Capacity product as accepted, the customer should follow their normal booking process within their TMS to secure the carrier on the load.
+
+
+        Request Structure
+
+
+        Title
+
+        Description
+
+
+        HTTP Method
+
+        GET
+
+
+        Authentication
+
+        Basic Auth
+
+
+        Content Type
+
+        APPLICATION/JSON
+
+
+        Response Format
+
+        JSON
+
+
+        Header
+
+        Encoded
+
+
+        Request Example:
+
+
+        https://capacity-offer-api.macropoint.com/api/v1/lspoffer/tms/123456/accept/123.4452
+
+
+        Respo'
+      parameters:
+      - name: lspId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: offerId
+        in: path
+        required: true
+        schema:
+          type: string
+      servers:
+      - url: https://capacity-offer-api.macropoint.com
+  /api/v1/lspoffer/{offerId}:
+    delete:
+      operationId: deleteLspofferOfferId
+      summary: Rescind Load Offer
+      tags:
+      - 3rd Party TMS Integration
+      x-source: https://capacitydocs.macropoint.com/
+      x-postman-examples:
+      - Rescind Load Offer
+      - Rescind Load Offer
+      responses:
+        '200':
+          description: Success
+      description: 'The Rescind Offer API provides the Customer or TMS the ability to rescind an offer by Customer OfferID via the MacroPoint Capacity product.
+
+
+        Requirements:
+
+
+        The Load must be open in the MacroPoint Capacity Product
+
+
+        An original offer must be created either via the Broker or Carrier
+
+
+        The OfferID is required in the DEL request
+
+
+        Request Structure
+
+
+        Title
+
+        Description
+
+
+        HTTP Method
+
+        GET
+
+
+        Authentication
+
+        Basic Auth
+
+
+        Content Type
+
+        APPLICATION/JSON
+
+
+        Response Format
+
+        JSON
+
+
+        Header
+
+        Encoded
+
+
+        Request Example:
+
+
+        https://capacity-offer-api.macropoint.com/api/v1/lspoffer/
+
+
+        Response Codes:
+
+
+        Code
+
+        Description
+
+
+        204
+
+        Offer Successfully Resinded'
+      parameters:
+      - name: offerId
+        in: path
+        required: true
+        schema:
+          type: string
+      servers:
+      - url: https://capacity-offer-api.macropoint.com
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+x-generated-from: postman-collection
+x-source: https://capacitydocs.macropoint.com/
+x-generated: '2026-10-20'
+x-customer-callbacks:
+- Offer Callback

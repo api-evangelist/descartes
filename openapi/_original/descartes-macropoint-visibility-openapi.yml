@@ -1,0 +1,1083 @@
+# x-archived-from: descartes-macropoint-visibility-openapi.yml
+# x-archived-on: 2026-10-20
+openapi: 3.1.0
+info:
+  title: Descartes MacroPoint Visibility API
+  version: latest
+  description: Converted mechanically from the Postman collection Descartes publishes at https://docs.macropoint.com/ (method, URL, query keys, example bodies). Responses are not described by the collection.
+  contact:
+    name: Descartes MacroPoint
+    url: https://docs.macropoint.com/
+x-generated-from: postman-collection
+x-source: https://docs.macropoint.com/
+x-generated: '2026-10-20'
+servers:
+- url: https://macropoint-lite.com
+- url: https://visibility.macropoint.com
+security:
+- basicAuth: []
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+paths:
+  /api/1.0/orders/createorder:
+    post:
+      operationId: postOrdersCreateorder
+      summary: Create Order
+      tags:
+      - Load Visibility Order Creation - XML
+      x-source: https://docs.macropoint.com/
+      x-postman-examples:
+      - Create Order
+      - Ocean Create Order
+      - Air Create Order
+      - Rail Create Order
+      - Create Order
+      - Ocean Create Order
+      - Air Create Order
+      - Rail Create Order
+      responses:
+        '200':
+          description: Success
+      description: '<h1 id="create-order-api-request-allows-customers-to-create-tracking-sessions-or-tracking-requests">Create Order API request allows customers to Create Tracking Sessions or Tracking
+        Requests</h1>
+
+        <h1 id="request-structure">Request Structure</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Title</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>HTTP Method</td>
+
+        <td>POST</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Authentication</td>
+
+        <td>Basic Auth</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Content Type</td>
+
+        <td>APPLICATION/XML</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Response Format</td>
+
+        <td>XML</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Header</td>
+
+        <td>Encoded</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><h1 id="create-order-elements">Create Order Elements</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Element</th>
+
+        <th>Description</th>
+
+        <th>Required</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>TrackVia</td>
+
+        <td>For FTL shipments, the trackvia captures details of the Driver, Truck, or Trailer tracking purposes. Mobile, VehicleID, TrailerID, and/or ShipmentID can be supplied in a Create Order Request.  <br
+        />  <br />If the TrackVia is not completed, a Tracking Request will be sent to the Carrier to provide the needed details to track the order.  <br />  <br />For LTL shipments, LTL PRO must be supplied.  <br
+        />  <br />For Ocean shipments, the Container Number must be supplied. <a href="https://">Ocean Tracking Request</a>  <br />  <br />For Air shipments, the Air Waybill Number must be supplied.  <br
+        />  <b'
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: string
+            example: "<Order xmlns=\"http://macropoint-lite.com/xml/1.0\" >\r\n    <TrackVia>\r\n        <Number Type=\"Mobile\">5555555555</Number>\r\n        <Number Type=\"VehicleID\">123</Number>\r\n\
+              \        <Number Type=\"TrailerID\">456789</Number>\r\n        <Number Type=\"ShipmentID\">ABC123</Number>\r\n        <Number Type=\"LTLPRO\">123456</Number>\r\n        <Number Type=\"ContainerNumber\"\
+              >TCLU4664990</Number>\r\n        <Number Type=\"AIRWAYBILL\">784-37711450</Number>\r\n        <Number Type=\"RailCar\">APZU4578201</Number>\r\n    </TrackVia>\r\n    <TrackStartDateTime>2025-01-01\
+              \ 12:00 ET</TrackStartDateTime>\r\n    <ReferenceInformation>\r\n        <Reference Type=\"BillofLadingNumber\">TEST012GX12345</Reference>\r\n        <Reference Type=\"SCAC\">TEST</Reference>\r\
+              \n    </ReferenceInformation>\r\n    <Notifications>\r\n        <Notification>\r\n            <PartnerMPID>1234567</PartnerMPID>\r\n            <IDNumber>Load-123</IDNumber>\r\n          \
+              \  <TrackDurationInHours>24</TrackDurationInHours>\r\n            <TrackIntervalInMinutes>30</TrackIntervalInMinutes>\r\n        \t<CustomerUDFData>\r\n        \t   <UDFDataKeyValue Key=\"\
+              {Reference 1}\">Ref</UDFDataKeyValue>\r\n            </CustomerUDFData>\r\n            <PostOverrideMPID>9876543</PostOverrideMPID>\r\n        </Notification>\r\n    </Notifications>\r\n \
+              \   <Carrier>\r\n        <Name>ABC Carrier</Name>\r\n        <CarrierID>ABCC</CarrierID>\r\n        <DotNumber>111111</DotNumber>\r\n        <NotifyCarrier>True</NotifyCarrier>\r\n    </Carrier>\r\
+              \n    <TripSheet>\r\n        <StopSequencingRequired>False</StopSequencingRequired>\r\n        <DelayedArrivalInMinutes>15</DelayedArrivalInMinutes>\r\n        <Stops>\r\n            <Stop>\r\
+              \n                <Name>Stop 1</Name>\r\n                <StopType>Pickup</StopType>\r\n                <Address>\r\n                    <Line1>6050 Oak Tree Blvd</Line1>\r\n             \
+              \       <Line2>Suite 190</Line2>\r\n                    <City>Independence</City>\r\n                    <StateOrProvince>OH</StateOrProvince>\r\n                    <PostalCode>44131</PostalCode>\r\
+              \n                    <Country>US</Country>\r\n                </Address>\r\n                <Latitude>41.396900</Latitude>\r\n                <Longitude>-81.662491</Longitude>\r\n       \
+              \         <StartDateTime>2025-01-01T12:00:00Z</StartDateTime>\r\n                <EndDateTime>2025-01-01T12:00:00Z</EndDateTime>\r\n                <GeofenceInMiles>5</GeofenceInMiles>\r\n\
+              \                <SequenceNumber>1</SequenceNumber>\r\n                <StopID>123</StopID>\r\n                <Notes>Notes Details</Notes>\r\n                <LastStopEventCompleted>Arrived</LastStopEventCompleted>\r\
+              \n                <LastStopEventCompletedDateTime>2025-01-01T12:00:00Z</LastStopEventCompletedDateTime>\r\n            </Stop>\r\n            <Stop>\r\n                <Name>Stop 2</Name>\r\
+              \n                <StopType>DropOff</StopType>\r\n                <Address>\r\n                    <Line1>1180 Seven Seas Dr</Line1>\r\n                    <Line2></Line2>\r\n            \
+              \        <City>Lake Buena Vista</City>\r\n                    <StateOrProvince>FL</StateOrProvince>\r\n                    <PostalCode>32830</PostalCode>\r\n                    <Country>US</Country>\r\
+              \n                </Address>\r\n                <Latitude>28.404011</Latitude>\r\n                <Longitude>-81.576897</Longitude>\r\n                <StartDateTime>2025-01-01T12:00:00Z</StartDateTime>\r\
+              \n                <EndDateTime>2025-01-10T17:00:00Z</EndDateTime>\r\n                <GeofenceInMiles></GeofenceInMiles>\r\n                <SequenceNumber>2</SequenceNumber>\r\n         \
+              \       <StopID>14-8</StopID>\r\n                <Notes>Notes details</Notes>\r\n                <LastStopEventCompleted>Arrived</LastStopEventCompleted>\r\n                <LastStopEventCompletedDateTime>2025-01-01T12:00:00Z</LastStopEventCompletedDateTime>\r\
+              \n            </Stop>\r\n        </Stops>\r\n    </TripSheet>\r\n    <HideTripSheet>false</HideTripSheet>\r\n    <Customer>CustomerName</Customer>\r\n    <Mode>Truckload</Mode>\r\n    <CustomerAccountNumber></CustomerAccountNumber>\r\
+              \n    <ScheduleAlerts>\r\n        <MaximumAllowableDrivi"
+      servers:
+      - url: https://macropoint-lite.com
+  /api/1.0/orders/changeorder/{orderId}:
+    post:
+      operationId: postOrdersChangeorderOrderId
+      summary: Change Order
+      tags:
+      - Load Visibility Order Creation - XML
+      x-source: https://docs.macropoint.com/
+      x-postman-examples:
+      - Change Order
+      - Change Order
+      responses:
+        '200':
+          description: Success
+      description: '<h1 id="change-order-api-request-allows-customers-to-edit-certain-fields-on-tracking-sessions">Change Order API Request allows customers to edit certain fields on tracking sessions</h1>
+
+        <p>When posting a Change Order, either the OrderID or TrackingRequestID provided by Descartes MacroPoint on the original Create Order success message must be used in the URL of the Change Order
+        request</p>
+
+        <p>The OrderID or TrackingRequestID can be used interchangeably to make Change Order requests</p>
+
+        <p>A complete XML must be submitted on the order, partial calls are not accepted. Tags that are <a href="#unacceptable-changes-overview">not supported</a> still need to be passed with populated
+        data from the Create Order request</p>
+
+        <h1 id="request-structure">Request Structure</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Title</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>HTTP Method</td>
+
+        <td>POST</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Authentication</td>
+
+        <td>Basic Auth</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Content Type</td>
+
+        <td>APPLICATION/XML</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Response Format</td>
+
+        <td>XML</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Header</td>
+
+        <td>Encoded</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><h1 id="change-order-elements-that-can-be-updated-in-the-change-order-request">Change Order Elements that can be updated in the Change Order request</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Element</th>
+
+        <th>Available Changes</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>TrackVia</td'
+      parameters:
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: string
+            example: "<Order xmlns=\"http://macropoint-lite.com/xml/1.0\" >\r\n    <TrackVia>\r\n        <Number Type=\"Mobile\">{CellNumber}</Number>\r\n        <Number Type=\"VehicleID\">{VehicleNumber}</Number>\r\
+              \n        <Number Type=\"TrailerID\">{TrailerNumber}</Number>\r\n        <Number Type=\"LTLPRO\">{LTLPRONumber}</Number>\r\n        <Number Type=\"ContainerNumber\">{ContainerNumber}</Number>\r\
+              \n    </TrackVia>\r\n    <TrackStartDateTime>2020-01-01 12:00 ET</TrackStartDateTime>\r\n    <ReferenceInformation>\r\n        <Reference Type=\"BillofLadingNumber\">{BOLNumber}</Reference>\r\
+              \n        <Reference Type=\"CarrierBookingNumber\">{CarrierBookingNumber}</Reference>\r\n        <Reference Type=\"SCAC\">{SCAC}</Reference>\r\n\t</ReferenceInformation>\r\n    <Notifications>\r\
+              \n        <Notification>\r\n            <PartnerMPID>{MPID}</PartnerMPID>\r\n            <IDNumber>{UniqueShipmentID}</IDNumber>\r\n            <TrackDurationInHours>{TrackDurationInHours}</TrackDurationInHours>\r\
+              \n            <TrackIntervalInMinutes>{TrackIntervalInMinutes}</TrackIntervalInMinutes>\r\n            <CustomerUDFData>\r\n                <UDFDataKeyValue Key=\"{Key}\">{Value}</UDFDataKeyValue>\r\
+              \n            </CustomerUDFData>\r\n            <PostOverrideMPID>{PostOverrideMPID}</PostOverrideMPID>\r\n        </Notification>\r\n    </Notifications>\r\n    <ColdChainZoneConfigurations>\r\
+              \n      <ColdChainZoneConfiguration>\r\n          <ZoneNumber>1</ZoneNumber>\r\n          <ZoneName>Meat</ZoneName>\r\n          <SetTemperature>15</SetTemperature>\r\n            <TempType>Fahrenheit</TempType>\r\
+              \n          <MaxTemperature>31</MaxTemperature>\r\n          <MinTemperature>0</MinTemperature>\r\n           <ConsecutiveMissesThreshold>0</ConsecutiveMissesThreshold>\r\n      </ColdChainZoneConfiguration>\r\
+              \n    </ColdChainZoneConfigurations>\r\n    <Carrier>\r\n        <Name>{Carrier Name}</Name>\r\n        <CarrierID>{CarrierID}</CarrierID>\r\n        <DotNumber>111111<DotNumber>\r\n     \
+              \   <NotifyCarrier>{True/False}</NotifyCarrier>\r\n    </Carrier>\r\n    <Vehicle>\r\n    \t<Type>{VehicleType}</Type>\r\n    </Vehicle>\r\n    <TripSheet>\r\n        <StopSequencingRequired>{True/False}</StopSequencingRequired>\r\
+              \n        <Stops>\r\n            <Stop>\r\n                <Name>{StopName}</Name>\r\n                <StopType>{StopType}</StopType>\r\n                <Address>\r\n                    <Line1>{Line1}</Line1>\r\
+              \n                    <Line2>{Line2}</Line2>\r\n                    <City>{City}</City>\r\n                    <StateOrProvince>{StateOrProvince}</StateOrProvince>\r\n                    <PostalCode>{PostalCode}</PostalCode>\r\
+              \n                    <Country>{Country}</Country>\r\n                </Address>\r\n                <Latitude>{Latitude}</Latitude>\r\n                <Longitude>{Longitude}</Longitude>\r\n\
+              \                <StartDateTime>2025-01-01T12:00Z</StartDateTime>\r\n                <EndDateTime>2025-01-01T12:00Z</EndDateTime>\r\n                <GeofenceInMiles>{Miles}</GeofenceInMiles>\r\
+              \n                <SequenceNumber>{SequenceNumber}</SequenceNumber>\r\n                <StopID>{StopID}</StopID>\r\n                <Notes>{StopNotes}</Notes>\r\n                <LastStopEventCompleted>{Arrived/Departed}</LastStopEventCompleted>\r\
+              \n            </Stop>\r\n            <Stop>\r\n                <Name>{StopName}</Name>\r\n                <StopType>{StopType}</StopType>\r\n                <Address>\r\n                 \
+              \   <Line1>{Line1}</Line1>\r\n                    <Line2>{Line2}</Line2>\r\n                    <City>{City}</City>\r\n                    <StateOrProvince>{StateOrProvince}</StateOrProvince>\r\
+              \n                    <PostalCode>{PostalCode}</PostalCode>\r\n                    <Country>{Country}</Country>\r\n                </Address>\r\n                <Latitude>{Latitude}</Latitude>\r\
+              \n                <Longitude>{Longitude}</Longitude>\r\n                <StartDateTime>2025-01-05T12:00Z</StartDateTime>\r\n                <EndDateTime>2025-01-05T12:00Z</EndDateTime>\r\n\
+              \                <GeofenceInMiles>{Miles}</GeofenceInMiles>\r\n                <SequenceNumber>{SequenceNumber}</SequenceNumber>\r\n                <StopID>{St"
+      servers:
+      - url: https://macropoint-lite.com
+  /api/1.0/orders/stoporder/{orderId}:
+    post:
+      operationId: postOrdersStoporderOrderId
+      summary: Stop Order
+      tags:
+      - Load Visibility Order Creation - XML
+      x-source: https://docs.macropoint.com/
+      x-postman-examples:
+      - Stop Order
+      - Stop Order
+      responses:
+        '200':
+          description: Success
+      description: '<h1 id="stop-order-api-request-allows-customers-to-cancel-orders-or-tracking-requests">Stop Order API Request allows customers to Cancel Orders or Tracking Requests</h1>
+
+        <p>Tracking Requests that have been created but are not yet assigned will be removed from Descartes MacroPoint''s website if a Stop Order request is sent</p>
+
+        <p>Tracking Sessions =that have been created will be moved to ''Stopped By Creator'' status</p>
+
+        <h1 id="request-structure">Request Structure</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Title</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>HTTP Method</td>
+
+        <td>POST</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Authentication</td>
+
+        <td>Basic Auth</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Content Type</td>
+
+        <td>APPLICATION/XML</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Response Format</td>
+
+        <td>XML</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Header</td>
+
+        <td>Encoded</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><h2 id="requires-either-the-orderid-or-trackingrequestid-received-from-the-successful-create-order-request-to-be-provided-in-the-endpoint-url">Requires either the OrderID or TrackingRequestID
+        received from the successful Create Order request to be provided in the Endpoint URL</h2>
+
+        <p>Example:</p>
+
+        <p><a href="https://macropoint-lite.com/api/1.0/orders/stoporder/FB93D3FE546749F5A3385D1E2961A12B">https://macropoint-lite.com/api/1.0/orders/stoporder/FB93D3FE546749F5A3385D1E2961A12B</a></p>
+
+        <h4 id="the-stop-order-response-does-not-provide-any-data-only-a-200-ok-status-will-be-returned">The Stop Order response does no'
+      parameters:
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
+      servers:
+      - url: https://macropoint-lite.com
+  /api/1.0/tms/data/tmsgateway:
+    post:
+      operationId: postTmsDataTmsgateway
+      summary: Order Hyperlink
+      tags:
+      - Load Visibility URL and Data Export Retrieval
+      x-source: https://docs.macropoint.com/
+      x-postman-examples:
+      - Order Hyperlink
+      - Stop Specific Order Hyperlink
+      responses:
+        '200':
+          description: Success
+      description: '<h2 id="the-order-hyperlink-allows-customers-to-receive-a-url-to-view-tracking-details-for-a-specified-shipment">The Order Hyperlink allows customers to receive a URL to view tracking
+        details for a specified shipment</h2>
+
+        <p>The URL received in the response can be embedded in the customers TMS/ERP by spawning off a new browser</p>
+
+        <p>Data accessible via the URL with or without a direct login to Descartes MacroPoint-Lite. Permissions are configurable on the account settings</p>
+
+        <h1 id="request-structure">Request Structure</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Title</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>HTTP Method</td>
+
+        <td>POST</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Authentication</td>
+
+        <td>Basic Auth</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Content Type</td>
+
+        <td>APPLICATION/XML</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Response Format</td>
+
+        <td>XML</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Header</td>
+
+        <td>Encoded</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><h1 id="order-hyperlink-tags">Order Hyperlink Tags</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Title</th>
+
+        <th>Description</th>
+
+        <th>Example</th>
+
+        <th>Required</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>ResourceType</td>
+
+        <td>This must always be populated as OrderDetail</td>
+
+        <td>OrderDetail</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Identifier</td>
+
+        <td>This can be the unique IDNumber that was supplied on the Create Order request, the Descartes MacroPoint generated OrderID, or Descartes MacroPoint TrackingRequestID from a successful '
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: string
+            example: "<TMSResourceRequest xmlns=\"http://macropoint-lite.com/xml/1.0\">\r\n <ResourceType>OrderDetail</ResourceType> \r\n <Identifier>{ID}</Identifier> \r\n</TMSResourceRequest>"
+      servers:
+      - url: https://macropoint-lite.com
+  /api/1.0/carrier/carrierwishlist:
+    post:
+      operationId: postCarrierCarrierwishlist
+      summary: Carrier Wishlist
+      tags:
+      - Carrier Data Connection and Communication
+      x-source: https://docs.macropoint.com/
+      responses:
+        '200':
+          description: Success
+      description: '<h2 id="the-carrier-wishlist-api-allows-customers-to-send-in-their-active-carrier-list-via-api-bulk-file-import-once-per-24-hour-time-period"><strong>The Carrier Wishlist API allows
+        customers to send in their active carrier list via API bulk file import once per 24 hour time period</strong></h2>
+
+        <p>Upon successful upload of the customers active carrier list in it''s entirety, only changes or additions to carriers should be sent. Desired cadence can be determined by the customer but should
+        not exceed once per 24 hour time period.</p>
+
+        <p>Required Data to successfully import desired carriers.</p>
+
+        <p>Note: Data is comma separted</p>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th><strong>Column Name</strong></th>
+
+        <th><strong>Description</strong></th>
+
+        <th><strong>Example</strong></th>
+
+        <th><strong>Required</strong></th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>DOT Number</td>
+
+        <td>Unique Carrier USDOT Number</td>
+
+        <td>12345</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Mapping Code</td>
+
+        <td>Unique Carrier ID from TMS</td>
+
+        <td>1234567</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Carrier Name</td>
+
+        <td>Carrier Name</td>
+
+        <td>Bobs Trucking</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        <tr>
+
+        <td>MC Number</td>
+
+        <td>Unique Carrier MC Number</td>
+
+        <td>MC-1234</td>
+
+        <td>No</td>
+
+        </tr>
+
+        <tr>
+
+        <td>MX Number</td>
+
+        <td>Unique Carrier MX Number</td>
+
+        <td>MX-1234</td>
+
+        <td>No</td>
+
+        </tr>
+
+        <tr>
+
+        <td>First Name</td>
+
+        <td>Carrier Contact First Name</td>
+
+        <td>John</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Last Name</td>
+
+        <td>Carrier Contact Last Name</'
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: string
+            example: "<BulkFile xmlns=\"http://macropoint-lite.com/xml/1.0\" >\r\n<FileData>\r\n<![CDATA[DotNumber,MappingCode,CarrierName,McNumber,MxNumber,FirstName,LastName,Email,Phone,Notes\r\n2584889,BTRK,Billy\
+              \ Trucking INC,,,Joe,Smith,carrier1@carrier.com,5555555555,Great Carrier]]>\r\n</FileData>\r\n</BulkFile>"
+      servers:
+      - url: https://macropoint-lite.com
+  /api/1.0/carrier/requestpartnerstatus/{CarrierID}:
+    get:
+      operationId: getCarrierRequestpartnerstatusCarrierID
+      summary: Good Truck API
+      tags:
+      - Carrier Data Connection and Communication
+      x-source: https://docs.macropoint.com/
+      responses:
+        '200':
+          description: Success
+      description: '<h2 id="the-good-truck-api-is-an-add-on-to-our-existing-partner-status-api">The Good Truck API is an add on to our existing Partner Status API</h2>
+
+        <p>A successful response will only be provided if the Good Truck API is enabled to your MacroPoint account and the carrier is correctly partnered to the Customer in Descartes MacroPoint-Lite which
+        includes the CarrierID code being present</p>
+
+        <h1 id="request-structure">Request Structure</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Title</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>HTTP Method</td>
+
+        <td>GET</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Authentication</td>
+
+        <td>Basic Auth</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Content Type</td>
+
+        <td>APPLICATION/XML</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Response Format</td>
+
+        <td>XML</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Header</td>
+
+        <td>Encoded</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><h1 id="example-request">Example Request:</h1>
+
+        <p><a href="https://macropoint-lite.com/api/1.0/carrier/requestpartnerstatus/ABCD">https://macropoint-lite.com/api/1.0/carrier/requestpartnerstatus/ABC</a></p>
+
+        <hr />
+
+        <h1 id="a-successful-response-will-include-the-following">A successful response will include the following:</h1>
+
+        <h1 id="status-element">Status Element:</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th><strong>Tag</strong></th>
+
+        <th><strong>Description</strong></th>
+
+        <th><strong>Example</strong></th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>Status</td>
+
+        <td>Status confirmation if the Good Truck API request was'
+      parameters:
+      - name: CarrierID
+        in: path
+        required: true
+        schema:
+          type: string
+      servers:
+      - url: https://macropoint-lite.com
+  /api/1.0/orders/SendMessage:
+    post:
+      operationId: postOrdersSendMessage
+      summary: Send Message
+      tags:
+      - Carrier Data Connection and Communication
+      x-source: https://docs.macropoint.com/
+      responses:
+        '200':
+          description: Success
+      description: '<h2 id="the-send-message-allows-customers-to-send-a-message-to-a-driver-for-a-specified-shipment">The Send Message allows customers to send a message to a driver for a specified shipment</h2>
+
+        <p>Load must be tracking via the MacroPoint for Truckers App and customer account configured for order messaging in order to leverage this functionality</p>
+
+        <p>The message will appear in the MacroPoint for Truckers App under the associated tracking session</p>
+
+        <h1 id="request-structure">Request Structure</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Title</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>HTTP Method</td>
+
+        <td>POST</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Authentication</td>
+
+        <td>Basic Auth</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Content Type</td>
+
+        <td>APPLICATION/XML</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Response Format</td>
+
+        <td>XML</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Header</td>
+
+        <td>Encoded</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><h1 id="send-message-tags">Send Message Tags</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Title</th>
+
+        <th>Description</th>
+
+        <th>Example</th>
+
+        <th>Required</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>OrderID</td>
+
+        <td>This is the unique OrderID or TrackingRequestID that was supplied on a successful Create Order request response</td>
+
+        <td>424C9CCF68C34DBBA40F017A11DB92BE</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Text</td>
+
+        <td>Message you are sending to the driver</td>
+
+        <td>Please let me know if you will be late</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><h2 id='
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: string
+            example: "<Message xmlns=\"http://macropoint-lite.com/xml/1.0\">\r\n <OrderID>OrderID</OrderID> \r\n <Text>Message to driver</Text> \r\n</Message>"
+      servers:
+      - url: https://macropoint-lite.com
+  /carrier-lookup:
+    options:
+      operationId: optionsCarrierlookup
+      summary: FraudGuard Lookup Hyperlink
+      tags:
+      - FraudGuard Carrier and Load Lookup
+      x-source: https://docs.macropoint.com/
+      responses:
+        '200':
+          description: Success
+      description: '<h2 id="the-fraudguard-details-can-also-be-retrieved-via-a-link-to-view-the-carrier-lookup-results-directly-in-descartes-macropoint">The FraudGuard details can also be retrieved via
+        a link to view the carrier lookup results directly in Descartes MacroPoint.</h2>
+
+        <p>To Create the link, build a URL from the carrier''s USDOT number or phone number. Your system then fills in the value for each carrier.</p>
+
+        <p>This feature requires additional account configuration to access. Please contact Descartes Service Desk or work with your implementation rep directly if you are interested.</p>
+
+        <h2 id="url-formats">URL Formats</h2>
+
+        <h3 id="lookup-by-us-dot-number">Lookup by US DOT number:</h3>
+
+        <p><a href="https://visibility.macropoint.com/carrier-lookup?dotNumber=%7Bdotnumber%7D">https://visibility.macropoint.com/carrier-lookup?dotNumber={dotnumber}</a></p>
+
+        <p>EX: <a href="https://visibility.macropoint.com/carrier-lookup?dotNumber=9999999">https://visibility.macropoint.com/carrier-lookup?dotNumber=9999999</a>  </p>
+
+        <h3 id="lookup-by-driver-phone-number">Lookup by driver phone number:</h3>
+
+        <p><a href="https://visibility.macropoint.com/carrier-lookup?phoneNumber=%7Bphonenumber%7D">https://visibility.macropoint.com/carrier-lookup?phoneNumber={phonenumber}</a></p>
+
+        <p>EX: <a href="https://visibility.macropoint.com/carrier-lookup?phoneNumber=8888888888">https://visibility.macropoint.com/carrier-lookup?phoneNumber=8888888888</a>  </p>
+
+        <p>The carrier DOT and driver phone parameters should be numerica'
+      servers:
+      - url: https://visibility.macropoint.com
+  /api/1.0/fraudguard:
+    post:
+      operationId: postFraudguard
+      summary: FraudGuard DOT
+      tags:
+      - FraudGuard Carrier and Load Lookup
+      x-source: https://docs.macropoint.com/
+      x-postman-examples:
+      - FraudGuard DOT
+      - FraudGuard Phone Number
+      - FraudGuard Load Number
+      responses:
+        '200':
+          description: Success
+      description: '<h2 id="the-fraudguard-api-allows-customers-to-receive-additional-statistics-for-a-specified-carrier-driver-or-shipment-to-proactively-indicate-fraudulent-behavior">The FraudGuard API
+        allows customers to receive additional statistics for a specified carrier, driver, or shipment to proactively indicate fraudulent behavior</h2>
+
+        <p>This feature requires additional account configuration to access. Please contact Descartes Service Desk or work with your implementation rep directly if you are interested.</p>
+
+        <h1 id="request-structure">Request Structure</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Title</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>HTTP Method</td>
+
+        <td>POST</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Authentication</td>
+
+        <td>Basic Auth</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Content Type</td>
+
+        <td>APPLICATION/JSON</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Response Format</td>
+
+        <td>JSON</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><h1 id="fraudguard-dot-request-structure">FraudGuard DOT Request Structure</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Key</th>
+
+        <th>Description</th>
+
+        <th>Example Value</th>
+
+        <th>Required</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>dot_number</td>
+
+        <td>Carrier DOT Number</td>
+
+        <td>111111</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><h1 id="fraudguard-dot-response-structure">FraudGuard DOT Response Structure</h1>
+
+        <h3 id="top-level-structure"><strong>Top-Level Structure</strong></h3>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><t'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+            example: "{\r\n    \"dot_number\" : \"1234567\"\r\n}\r\n"
+      servers:
+      - url: https://macropoint-lite.com
+x-customer-callbacks:
+- Cold Chain Temperature Alerts
+- Enhanced Shipment Status
+- Form Submits
+- Load Start Follow Along
+- Location Updates
+- Location and Temperature Updates
+- Mapped Partner
+- Notification Center Alerts
+- Order Messaging
+- Order Status
+- Schedule Alerts
+- Trip Events

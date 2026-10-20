@@ -1,0 +1,794 @@
+# x-archived-from: descartes-macropoint-carrier-openapi.yml
+# x-archived-on: 2026-10-20
+openapi: 3.1.0
+info:
+  title: Descartes MacroPoint Visibility Carrier Integration API
+  version: latest
+  description: Converted mechanically from the Postman collection Descartes publishes at https://carrierdocs.macropoint.com/ (method, URL, query keys, example bodies). Responses are not described by the
+    collection.
+  contact:
+    name: Descartes MacroPoint
+    url: https://carrierdocs.macropoint.com/
+x-generated-from: postman-collection
+x-source: https://carrierdocs.macropoint.com/
+x-generated: '2026-10-20'
+servers:
+- url: https://macropoint-lite.com
+security:
+- basicAuth: []
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+paths:
+  /api/1.0/tms/data/location:
+    post:
+      operationId: postTmsDataLocation
+      summary: Location Update
+      tags:
+      - API - XML
+      x-source: https://carrierdocs.macropoint.com/
+      x-postman-examples:
+      - Location Update
+      - Location + Temperature Update
+      - Location Update
+      - Location + Temperature Update
+      responses:
+        '200':
+          description: Success
+      description: '<h1 id="location-update-api-calls-allow-carriers-to-send-in-transit-location-updates-to-customers">Location Update API calls allow carriers to send in transit location updates to customers.</h1>
+
+        <h1 id="request-structure">Request Structure</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Title</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>HTTP Method</td>
+
+        <td>POST</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Authentication</td>
+
+        <td>Basic Auth</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Content Type</td>
+
+        <td>APPLICATION/XML</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Response Format</td>
+
+        <td>XML</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Header</td>
+
+        <td>Encoded</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><h2 id="data-throttle">Data Throttle</h2>
+
+        <p>Location updates will be throttled if sent more frequently than 5 minutes per LoadID</p>
+
+        <h1 id="location-update-elements">Location Update Elements</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Element</th>
+
+        <th>Description</th>
+
+        <th>Required</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td><a href="#location-update-sender-tags">Sender</a></td>
+
+        <td>Captures carrier identifier</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        <tr>
+
+        <td><a href="#location-update-requestor-tags">Requestor</a></td>
+
+        <td>Captures customer information</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        <tr>
+
+        <td><a href="#location-update-allowaccessfrom-tags">AllowAccessFrom</a></td>
+
+        <td>Captures customer information</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        <tr>
+
+        <td><a href="#location-update-location-tags">Location</a></td>
+
+        <td>Position of the in transit update'
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: string
+            example: "<TMSLocationData xmlns=\"http://macropoint-lite.com/xml/1.0\">\r\n  <Sender>\r\n    <LoadID>ABC123</LoadID>\r\n  </Sender>\r\n  <Requestor>\r\n    <MPID>123456</MPID>\r\n    <LoadID>Load-123</LoadID>\r\
+              \n  </Requestor>\r\n  <AllowAccessFrom>\r\n    <MPID>123456</MPID>\r\n  </AllowAccessFrom>\r\n  <Location>\r\n    <Coordinates>\r\n      <Latitude>41.396900</Latitude>\r\n      <Longitude>-81.662491</Longitude>\r\
+              \n    </Coordinates>\r\n    <CreatedDateTime>2020-01-01T12:00:00Z</CreatedDateTime>\r\n  </Location>\r\n</TMSLocationData>"
+  /api/1.0/tms/data/stopevent:
+    post:
+      operationId: postTmsDataStopevent
+      summary: Event Update
+      tags:
+      - API - XML
+      x-source: https://carrierdocs.macropoint.com/
+      x-postman-examples:
+      - Event Update
+      - Event Update
+      responses:
+        '200':
+          description: Success
+      description: '<h1 id="event-update-api-calls-allow-carriers-to-send-arrival-and-departure-messages-to-customers">Event Update API calls allow carriers to send arrival and departure messages to customers.</h1>
+
+        <h1 id="request-structure">Request Structure</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Title</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>HTTP Method</td>
+
+        <td>POST</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Authentication</td>
+
+        <td>Basic Auth</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Content Type</td>
+
+        <td>APPLICATION/XML</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Response Format</td>
+
+        <td>XML</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Header</td>
+
+        <td>Encoded</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><h1 id="event-update-elements">Event Update Elements</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Element</th>
+
+        <th>Description</th>
+
+        <th>Required</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td><a href="#event-update-sender-tags">Sender</a></td>
+
+        <td>Captures carrier identifier</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        <tr>
+
+        <td><a href="#event-update-requestor-tags">Requestor</a></td>
+
+        <td>Captures customer information</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        <tr>
+
+        <td><a href="#event-update-stop-tags">Stop</a></td>
+
+        <td>Captures stop information of load</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        <tr>
+
+        <td><a href="#event-update-event-tags">Event</a></td>
+
+        <td>Captures event type and time</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><h1 id="event-update-sender-tags">Event Update Sender Tags</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead'
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: string
+            example: "<TMSStopEventData xmlns=\"http://macropoint-lite.com/xml/1.0\">\r\n     <Sender>\r\n          <LoadID>ABC123</LoadID>\r\n     </Sender>\r\n     <Requestor>\r\n          <MPID>123456</MPID>\r\
+              \n          <LoadID>Load-123</LoadID>\r\n     </Requestor>\r\n     <Stop>\r\n     <Name>Shipper</Name>\r\n          <StopType>PickUp</StopType>\r\n          <Address>\r\n               <Line1>6050\
+              \ Oak Tree Blvd</Line1>\r\n               <City>Independence></City>\r\n               <StateOrProvince>OH</StateOrProvince>\r\n               <PostalCode>44131</PostalCode>\r\n          </Address>\r\
+              \n          <SequenceNumber>1</SequenceNumber>\r\n     </Stop>\r\n     <Event>\r\n          <Name>Arrived</Name>\r\n          <CompletedDateTime>2020-01-01T12:00:00Z</CompletedDateTime>\r\n\
+              \     </Event>\r\n</TMSStopEventData>"
+  /api/1.0/order/trackingnumberassignment:
+    post:
+      operationId: postOrderTrackingnumberassignment
+      summary: Tracking Assignment
+      tags:
+      - API - XML
+      x-source: https://carrierdocs.macropoint.com/
+      x-postman-examples:
+      - Tracking Assignment
+      - Tracking Assignment
+      responses:
+        '200':
+          description: Success
+      description: '<h1 id="tracking-assignment-api-calls-allow-carriers-to-assign-driver-information-to-a-tracking-request">Tracking Assignment API calls allow carriers to assign driver information to
+        a tracking request</h1>
+
+        <p>Tracking Assignment calls should only be used if you cannot pass Location Updates for loads. If an ELD/GPS connection has already been established to MacroPoint you may automate the assignment
+        of vehicle/trailer IDs via this call or you can assign a Mobile number if no connection exists with MacroPoint.</p>
+
+        <h1 id="request-structure">Request Structure</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Title</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>HTTP Method</td>
+
+        <td>POST</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Authentication</td>
+
+        <td>Basic Auth</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Content Type</td>
+
+        <td>APPLICATION/XML</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Response Format</td>
+
+        <td>XML</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Header</td>
+
+        <td>Encoded</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><h1 id="tracking-assignment-update-elements">Tracking Assignment Update Elements</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Element</th>
+
+        <th>Description</th>
+
+        <th>Required</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td><a href="#tracking-assignment-number-tags">Number</a></td>
+
+        <td>Captures the number type and ID used to track</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        <tr>
+
+        <td><a href="#tracking-assignment-requestor-tags">Requestor</a></td>
+
+        <td>Captures customer information</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        </tbody>'
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: string
+            example: "<TrackingNumberData xmlns=\"http://macropoint-lite.com/xml/1.0\">\r\n <Number Type=\"VehicleID\">1234</Number>\r\n <Requestor>\r\n\t<MPID>123456</MPID>\r\n\t<LoadID>Load-123</LoadID>\r\
+              \n </Requestor>\r\n</TrackingNumberData>"
+  /api/1.0/tms/data/shipmentstatus:
+    post:
+      operationId: postTmsDataShipmentstatus
+      summary: Enhanced Shipment Status
+      tags:
+      - API - XML
+      x-source: https://carrierdocs.macropoint.com/
+      x-postman-examples:
+      - Enhanced Shipment Status
+      - Enhanced Shipment Status
+      responses:
+        '200':
+          description: Success
+      description: '<h1 id="enhanced-shipment-status-api-calls-allow-carriers-to-supply-detailed-status-messages-to-customers">Enhanced Shipment Status API calls allow carriers to supply detailed status
+        messages to customers.</h1>
+
+        <h2 id="request-structure">Request Structure</h2>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Title</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>HTTP Method</td>
+
+        <td>POST</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Authentication</td>
+
+        <td>Basic Auth</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Content Type</td>
+
+        <td>APPLICATION/XML</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Response Format</td>
+
+        <td>XML</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Header</td>
+
+        <td>Encoded</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><h2 id="enhanced-shipment-status-elements">Enhanced Shipment Status Elements</h2>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Element</th>
+
+        <th>Description</th>
+
+        <th>Required</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td><a href="#location-update-sender-tags">Sender</a></td>
+
+        <td>Captures carrier identifier</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        <tr>
+
+        <td><a href="#location-update-requestor-tags">Requestor</a></td>
+
+        <td>Captures customer information</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><h2 id="enhanced-shipment-status-tags">Enhanced Shipment Status Tags</h2>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Type</th>
+
+        <th>Description</th>
+
+        <th>Example</th>
+
+        <th><strong>Required</strong></th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>SCAC</td>
+
+        <td>Company''s SCAC</td>
+
+        <td>ABCD</td>
+
+        <td>N'
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: string
+            example: "<?xml version=\"1.0\"?>\r\n<TMSShipmentStatus xmlns=\"http://macropoint-lite.com/xml/1.0\">\r\n   <Sender>\r\n    <LoadID>{{SenderLoadID}}</LoadID>\r\n  </Sender>\r\n  <Requestor>\r\
+              \n    <MPID>{{RequestorMPID}}</MPID>\r\n    <LoadID>{{RequestorLoadID}}</LoadID>\r\n  </Requestor>\r\n    <ShipmentStatus>\r\n        <SCAC>{CarrierCode}</SCAC>\r\n        <Type>{Estimated\
+              \ or Actual}</Type>\r\n        <StatusMessageDetail>{StatusMessageDetail}</StatusMessageDetail>\r\n        <CreatedDateTime>{CreatedDateTime}</CreatedDateTime>\r\n        <City>{City}</City>\r\
+              \n        <State>{State}</State>\r\n        <Country>{Country}</Country>\r\n        <EventETA>{EventETA}</EventETA>\r\n    </ShipmentStatus>\r\n</TMSShipmentStatus>\r\n"
+  /api/1.0/TMS/Data/FormUpload:
+    post:
+      operationId: postTMSDataFormUpload
+      summary: Form/Document Upload
+      tags:
+      - API - XML
+      x-source: https://carrierdocs.macropoint.com/
+      x-postman-examples:
+      - Form/Document Upload
+      - Form/Document Upload
+      responses:
+        '200':
+          description: Success
+      description: '<h1 id="carrier-api-formdocument-upload"><strong>Carrier API form/document upload</strong></h1>
+
+        <p>The FormUpload API allows for the submission of associated shipment documentation, images or related forms.</p>
+
+        <p><strong>Examples:</strong></p>
+
+        <ul>
+
+        <li><p>BOLs</p>
+
+        </li>
+
+        <li><p>PODs</p>
+
+        </li>
+
+        <li><p>Delivery proof images</p>
+
+        </li>
+
+        </ul>
+
+        <h1 id="request-structure">Request Structure</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th>Title</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>HTTP Method</td>
+
+        <td>POST</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Authentication</td>
+
+        <td>Basic Auth</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Content Type</td>
+
+        <td>APPLICATION/XML</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Response Format</td>
+
+        <td>XML</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Header</td>
+
+        <td>Encoded</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        </div><h1 id="form-upload-elements">Form Upload Elements</h1>
+
+        <div class="click-to-expand-wrapper is-table-wrapper"><table>
+
+        <thead>
+
+        <tr>
+
+        <th><strong>Element</strong></th>
+
+        <th><strong>Description</strong></th>
+
+        <th><strong>Required</strong></th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>Sender</td>
+
+        <td>Captures carrier identifier</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Requestor</td>
+
+        <td>Captures customer information</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        <tr>
+
+        <td>StopType</td>
+
+        <td>Captures the type of Stop (PickUp or DropOff)</td>
+
+        <td>No</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Event</td>
+
+        <td>Capatures the type of event (Arrived or Departed)</td>
+
+        <td>No</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Elements</td>
+
+        <td>Captures the document details</td>
+
+        <td>Yes</td>
+
+        </tr>
+
+        </tbody'
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: string
+            example: "<?xml version=\"1.0\"?>\r\n<TMSFormData\r\n\txmlns=\"http://macropoint-lite.com/xml/1.0\">\r\n\t<Sender>\r\n\t\t<LoadID>ABC123</LoadID>\r\n\t</Sender>\r\n\t<Requestor>\r\n\t\t<MPID>123456</MPID>\r\
+              \n\t\t<LoadID>Load-123</LoadID>\r\n\t</Requestor>\r\n    <StopType>DropOff</StopType><!-- Optional field -->\r\n    <Event>Arrived</Event><!-- Optional field -->\r\n\t<Elements>\r\n\t\t<Element>\r\
+              \n\t\t\t<Id>POD</Id>\r\n\t\t\t<Name>POD</Name>\r\n\t\t\t<Type>Binary</Type>\r\n\t\t\t<MimeType>image/png</MimeType>\r\n\t\t\t<Data Encoding=\"Base64\">{{base64EncodedFile}}</Data>\r\n\t\t\
+              </Element>\r\n\t</Elements>\r\n</TMSFormData>"

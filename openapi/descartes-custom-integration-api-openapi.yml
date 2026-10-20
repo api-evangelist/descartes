@@ -1,0 +1,185 @@
+openapi: 3.2.0
+info:
+  title: Descartes MacroPoint Capacity Integration Custom…
+  version: latest
+  description: Converted mechanically from the Postman collection Descartes publishes at https://capacitydocs.macropoint.com/ (method, URL, query keys, example bodies). Responses are not described by the collection.
+  contact:
+    name: Descartes MacroPoint
+    url: https://capacitydocs.macropoint.com/
+servers:
+- url: https://capacity-offer-api.macropoint.com
+- url: https://dw-export-capacity.macropoint.com
+- url: https://import-capacity.macropoint.com
+security:
+- basicAuth: []
+tags:
+- name: Custom Integration
+paths:
+  /api/v1/lspoffer/{offerId}:
+    get:
+      operationId: getLspofferOfferId
+      summary: Details about an Offer
+      tags:
+      - Custom Integration
+      x-source: https://capacitydocs.macropoint.com/
+      responses:
+        '200':
+          description: Success
+      description: 'The Details about an Offer API provides the Customer the ability get offer details for a specified open load that has been sent to the MacroPoint Capacity product
+
+
+        Requirements:
+
+
+        The Load must be open in the MacroPoint Capacity Product
+
+
+        An original offer must be created either via the Broker or Carrier.
+
+
+        If there are no open offers on a load, a blank 200 OK response be received
+
+
+        The Offer ID is required in the GET Request
+
+
+        Request Structure
+
+
+        Title
+
+        Description
+
+
+        HTTP Method
+
+        GET
+
+
+        Authentication
+
+        Basic Auth
+
+
+        Content Type
+
+        APPLICATION/JSON
+
+
+        Response Format
+
+        JSON
+
+
+        Header
+
+        Encoded
+
+
+        Request Example:
+
+
+        https://capacity-offer-api.macropoint.com/api/v1/lspoffer/12345678
+
+
+        Response Schema:
+
+
+        <t'
+      parameters:
+      - name: offerId
+        in: path
+        required: true
+        schema:
+          type: string
+      servers:
+      - url: https://capacity-offer-api.macropoint.com
+  /api/v1/lspoffer/accept/{offerId}:
+    get:
+      operationId: getLspofferAcceptOfferId
+      summary: Accept Offer
+      tags:
+      - Custom Integration
+      x-source: https://capacitydocs.macropoint.com/
+      responses:
+        '200':
+          description: Success
+      description: 'The Accept Offer API provides the Customer the ability to accept an offer via the MacroPoint Capacity product.
+
+
+        Requirements:
+
+
+        The Load must be open in the MacroPoint Capacity Product
+
+
+        An original offer must be created either via the Broker or Carrier
+
+
+        The OfferID is required in the GET Request
+
+
+        Once the load has been sent to the Descartes MacroPoint Capacity product as accepted, the customer should follow their normal booking process within their TMS to secure the carrier on the load.
+
+
+        Request Structure
+
+
+        Title
+
+        Description
+
+
+        HTTP Method
+
+        GET
+
+
+        Authentication
+
+        Basic Auth
+
+
+        Content Type
+
+        APPLICATION/JSON
+
+
+        Response Format
+
+        JSON
+
+
+        Header
+
+        Encoded
+
+
+        Request Example:
+
+
+        https://capacity-offer-api.macropoint.com/api/v1/lspoffer/accept/12345678
+
+
+        Response Schema:
+
+
+        <tabl'
+      parameters:
+      - name: offerId
+        in: path
+        required: true
+        schema:
+          type: string
+      servers:
+      - url: https://capacity-offer-api.macropoint.com
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+x-generated-from: postman-collection
+x-source: https://capacitydocs.macropoint.com/
+x-generated: '2026-10-20'
+x-customer-callbacks:
+- Offer Callback

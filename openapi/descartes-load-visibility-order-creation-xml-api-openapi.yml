@@ -1,0 +1,281 @@
+openapi: 3.2.0
+info:
+  title: Descartes MacroPoint Visibility Load Visibility Order…
+  version: latest
+  description: Converted mechanically from the Postman collection Descartes publishes at https://docs.macropoint.com/ (method, URL, query keys, example bodies). Responses are not described by the collection.
+  contact:
+    name: Descartes MacroPoint
+    url: https://docs.macropoint.com/
+servers:
+- url: https://macropoint-lite.com
+- url: https://visibility.macropoint.com
+security:
+- basicAuth: []
+tags:
+- name: Load Visibility Order Creation - XML
+paths:
+  /api/1.0/orders/createorder:
+    post:
+      operationId: postOrdersCreateorder
+      summary: Create Order
+      tags:
+      - Load Visibility Order Creation - XML
+      x-source: https://docs.macropoint.com/
+      x-postman-examples:
+      - Create Order
+      - Ocean Create Order
+      - Air Create Order
+      - Rail Create Order
+      - Create Order
+      - Ocean Create Order
+      - Air Create Order
+      - Rail Create Order
+      responses:
+        '200':
+          description: Success
+      description: 'Create Order API request allows customers to Create Tracking Sessions or Tracking Requests
+
+
+        Request Structure
+
+
+        Title
+
+        Description
+
+
+        HTTP Method
+
+        POST
+
+
+        Authentication
+
+        Basic Auth
+
+
+        Content Type
+
+        APPLICATION/XML
+
+
+        Response Format
+
+        XML
+
+
+        Header
+
+        Encoded
+
+
+        Create Order Elements
+
+
+        Element
+
+        Description
+
+        Required
+
+
+        TrackVia
+
+        For FTL shipments, the trackvia captures details of the Driver, Truck, or Trailer tracking purposes. Mobile, VehicleID, TrailerID, and/or ShipmentID can be supplied in a Create Order Request.
+
+
+        If the TrackVia is not completed, a Tracking Request will be sent to the Carrier to provide the needed details to track the order.
+
+
+        For LTL shipments, LTL PRO must be supplied.
+
+
+        For Ocean shipments, the Container Number must be supplied. Ocean Tracking Request
+
+
+        For Air shipments, the Air Waybill Number must be supplied.
+
+        <b'
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: string
+            example: "<Order xmlns=\"http://macropoint-lite.com/xml/1.0\" >\n    <TrackVia>\n        <Number Type=\"Mobile\">5555555555</Number>\n        <Number Type=\"VehicleID\">123</Number>\n        <Number Type=\"TrailerID\">456789</Number>\n        <Number Type=\"ShipmentID\">ABC123</Number>\n        <Number Type=\"LTLPRO\">123456</Number>\n        <Number Type=\"ContainerNumber\">TCLU4664990</Number>\n        <Number Type=\"AIRWAYBILL\">784-37711450</Number>\n        <Number Type=\"RailCar\">APZU4578201</Number>\n    </TrackVia>\n    <TrackStartDateTime>2025-01-01 12:00 ET</TrackStartDateTime>\n    <ReferenceInformation>\n        <Reference Type=\"BillofLadingNumber\">TEST012GX12345</Reference>\n        <Reference Type=\"SCAC\">TEST</Reference>\n    </ReferenceInformation>\n    <Notifications>\n        <Notification>\n            <PartnerMPID>1234567</PartnerMPID>\n            <IDNumber>Load-123</IDNumber>\n            <TrackDurationInHours>24</TrackDurationInHours>\n            <TrackIntervalInMinutes>30</TrackIntervalInMinutes>\n        \t<CustomerUDFData>\n        \t   <UDFDataKeyValue Key=\"{Reference 1}\">Ref</UDFDataKeyValue>\n            </CustomerUDFData>\n            <PostOverrideMPID>9876543</PostOverrideMPID>\n        </Notification>\n    </Notifications>\n    <Carrier>\n        <Name>ABC Carrier</Name>\n        <CarrierID>ABCC</CarrierID>\n        <DotNumber>111111</DotNumber>\n        <NotifyCarrier>True</NotifyCarrier>\n    </Carrier>\n    <TripSheet>\n        <StopSequencingRequired>False</StopSequencingRequired>\n        <DelayedArrivalInMinutes>15</DelayedArrivalInMinutes>\n        <Stops>\n            <Stop>\n                <Name>Stop 1</Name>\n                <StopType>Pickup</StopType>\n                <Address>\n                    <Line1>6050 Oak Tree Blvd</Line1>\n                    <Line2>Suite 190</Line2>\n                    <City>Independence</City>\n                    <StateOrProvince>OH</StateOrProvince>\n                    <PostalCode>44131</PostalCode>\n                    <Country>US</Country>\n                </Address>\n                <Latitude>41.396900</Latitude>\n                <Longitude>-81.662491</Longitude>\n                <StartDateTime>2025-01-01T12:00:00Z</StartDateTime>\n                <EndDateTime>2025-01-01T12:00:00Z</EndDateTime>\n                <GeofenceInMiles>5</GeofenceInMiles>\n                <SequenceNumber>1</SequenceNumber>\n                <StopID>123</StopID>\n                <Notes>Notes Details</Notes>\n                <LastStopEventCompleted>Arrived</LastStopEventCompleted>\n                <LastStopEventCompletedDateTime>2025-01-01T12:00:00Z</LastStopEventCompletedDateTime>\n            </Stop>\n            <Stop>\n                <Name>Stop 2</Name>\n                <StopType>DropOff</StopType>\n                <Address>\n                    <Line1>1180 Seven Seas Dr</Line1>\n                    <Line2></Line2>\n                    <City>Lake Buena Vista</City>\n                    <StateOrProvince>FL</StateOrProvince>\n                    <PostalCode>32830</PostalCode>\n                    <Country>US</Country>\n                </Address>\n                <Latitude>28.404011</Latitude>\n                <Longitude>-81.576897</Longitude>\n                <StartDateTime>2025-01-01T12:00:00Z</StartDateTime>\n                <EndDateTime>2025-01-10T17:00:00Z</EndDateTime>\n                <GeofenceInMiles></GeofenceInMiles>\n                <SequenceNumber>2</SequenceNumber>\n                <StopID>14-8</StopID>\n                <Notes>Notes details</Notes>\n                <LastStopEventCompleted>Arrived</LastStopEventCompleted>\n                <LastStopEventCompletedDateTime>2025-01-01T12:00:00Z</LastStopEventCompletedDateTime>\n            </Stop>\n        </Stops>\n    </TripSheet>\n    <HideTripSheet>false</HideTripSheet>\n    <Customer>CustomerName</Customer>\n    <Mode>Truckload</Mode>\n    <CustomerAccountNumber></CustomerAccountNumber>\n    <ScheduleAlerts>\n        <MaximumAllowableDrivi"
+      servers:
+      - url: https://macropoint-lite.com
+  /api/1.0/orders/changeorder/{orderId}:
+    post:
+      operationId: postOrdersChangeorderOrderId
+      summary: Change Order
+      tags:
+      - Load Visibility Order Creation - XML
+      x-source: https://docs.macropoint.com/
+      x-postman-examples:
+      - Change Order
+      - Change Order
+      responses:
+        '200':
+          description: Success
+      description: 'Change Order API Request allows customers to edit certain fields on tracking sessions
+
+
+        When posting a Change Order, either the OrderID or TrackingRequestID provided by Descartes MacroPoint on the original Create Order success message must be used in the URL of the Change Order request
+
+
+        The OrderID or TrackingRequestID can be used interchangeably to make Change Order requests
+
+
+        A complete XML must be submitted on the order, partial calls are not accepted. Tags that are not supported still need to be passed with populated data from the Create Order request
+
+
+        Request Structure
+
+
+        Title
+
+        Description
+
+
+        HTTP Method
+
+        POST
+
+
+        Authentication
+
+        Basic Auth
+
+
+        Content Type
+
+        APPLICATION/XML
+
+
+        Response Format
+
+        XML
+
+
+        Header
+
+        Encoded
+
+
+        Change Order Elements that can be updated in the Change Order request
+
+
+        Element
+
+        Available Changes
+
+
+        TrackVia</td'
+      parameters:
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: string
+            example: "<Order xmlns=\"http://macropoint-lite.com/xml/1.0\" >\n    <TrackVia>\n        <Number Type=\"Mobile\">{CellNumber}</Number>\n        <Number Type=\"VehicleID\">{VehicleNumber}</Number>\n        <Number Type=\"TrailerID\">{TrailerNumber}</Number>\n        <Number Type=\"LTLPRO\">{LTLPRONumber}</Number>\n        <Number Type=\"ContainerNumber\">{ContainerNumber}</Number>\n    </TrackVia>\n    <TrackStartDateTime>2020-01-01 12:00 ET</TrackStartDateTime>\n    <ReferenceInformation>\n        <Reference Type=\"BillofLadingNumber\">{BOLNumber}</Reference>\n        <Reference Type=\"CarrierBookingNumber\">{CarrierBookingNumber}</Reference>\n        <Reference Type=\"SCAC\">{SCAC}</Reference>\n\t</ReferenceInformation>\n    <Notifications>\n        <Notification>\n            <PartnerMPID>{MPID}</PartnerMPID>\n            <IDNumber>{UniqueShipmentID}</IDNumber>\n            <TrackDurationInHours>{TrackDurationInHours}</TrackDurationInHours>\n            <TrackIntervalInMinutes>{TrackIntervalInMinutes}</TrackIntervalInMinutes>\n            <CustomerUDFData>\n                <UDFDataKeyValue Key=\"{Key}\">{Value}</UDFDataKeyValue>\n            </CustomerUDFData>\n            <PostOverrideMPID>{PostOverrideMPID}</PostOverrideMPID>\n        </Notification>\n    </Notifications>\n    <ColdChainZoneConfigurations>\n      <ColdChainZoneConfiguration>\n          <ZoneNumber>1</ZoneNumber>\n          <ZoneName>Meat</ZoneName>\n          <SetTemperature>15</SetTemperature>\n            <TempType>Fahrenheit</TempType>\n          <MaxTemperature>31</MaxTemperature>\n          <MinTemperature>0</MinTemperature>\n           <ConsecutiveMissesThreshold>0</ConsecutiveMissesThreshold>\n      </ColdChainZoneConfiguration>\n    </ColdChainZoneConfigurations>\n    <Carrier>\n        <Name>{Carrier Name}</Name>\n        <CarrierID>{CarrierID}</CarrierID>\n        <DotNumber>111111<DotNumber>\n        <NotifyCarrier>{True/False}</NotifyCarrier>\n    </Carrier>\n    <Vehicle>\n    \t<Type>{VehicleType}</Type>\n    </Vehicle>\n    <TripSheet>\n        <StopSequencingRequired>{True/False}</StopSequencingRequired>\n        <Stops>\n            <Stop>\n                <Name>{StopName}</Name>\n                <StopType>{StopType}</StopType>\n                <Address>\n                    <Line1>{Line1}</Line1>\n                    <Line2>{Line2}</Line2>\n                    <City>{City}</City>\n                    <StateOrProvince>{StateOrProvince}</StateOrProvince>\n                    <PostalCode>{PostalCode}</PostalCode>\n                    <Country>{Country}</Country>\n                </Address>\n                <Latitude>{Latitude}</Latitude>\n                <Longitude>{Longitude}</Longitude>\n                <StartDateTime>2025-01-01T12:00Z</StartDateTime>\n                <EndDateTime>2025-01-01T12:00Z</EndDateTime>\n                <GeofenceInMiles>{Miles}</GeofenceInMiles>\n                <SequenceNumber>{SequenceNumber}</SequenceNumber>\n                <StopID>{StopID}</StopID>\n                <Notes>{StopNotes}</Notes>\n                <LastStopEventCompleted>{Arrived/Departed}</LastStopEventCompleted>\n            </Stop>\n            <Stop>\n                <Name>{StopName}</Name>\n                <StopType>{StopType}</StopType>\n                <Address>\n                    <Line1>{Line1}</Line1>\n                    <Line2>{Line2}</Line2>\n                    <City>{City}</City>\n                    <StateOrProvince>{StateOrProvince}</StateOrProvince>\n                    <PostalCode>{PostalCode}</PostalCode>\n                    <Country>{Country}</Country>\n                </Address>\n                <Latitude>{Latitude}</Latitude>\n                <Longitude>{Longitude}</Longitude>\n                <StartDateTime>2025-01-05T12:00Z</StartDateTime>\n                <EndDateTime>2025-01-05T12:00Z</EndDateTime>\n                <GeofenceInMiles>{Miles}</GeofenceInMiles>\n                <SequenceNumber>{SequenceNumber}</SequenceNumber>\n                <StopID>{St"
+      servers:
+      - url: https://macropoint-lite.com
+  /api/1.0/orders/stoporder/{orderId}:
+    post:
+      operationId: postOrdersStoporderOrderId
+      summary: Stop Order
+      tags:
+      - Load Visibility Order Creation - XML
+      x-source: https://docs.macropoint.com/
+      x-postman-examples:
+      - Stop Order
+      - Stop Order
+      responses:
+        '200':
+          description: Success
+      description: 'Stop Order API Request allows customers to Cancel Orders or Tracking Requests
+
+
+        Tracking Requests that have been created but are not yet assigned will be removed from Descartes MacroPoint''s website if a Stop Order request is sent
+
+
+        Tracking Sessions =that have been created will be moved to ''Stopped By Creator'' status
+
+
+        Request Structure
+
+
+        Title
+
+        Description
+
+
+        HTTP Method
+
+        POST
+
+
+        Authentication
+
+        Basic Auth
+
+
+        Content Type
+
+        APPLICATION/XML
+
+
+        Response Format
+
+        XML
+
+
+        Header
+
+        Encoded
+
+
+        Requires either the OrderID or TrackingRequestID received from the successful Create Order request to be provided in the Endpoint URL
+
+
+        Example:
+
+
+        https://macropoint-lite.com/api/1.0/orders/stoporder/FB93D3FE546749F5A3385D1E2961A12B
+
+
+        The Stop Order response does no'
+      parameters:
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
+      servers:
+      - url: https://macropoint-lite.com
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+x-generated-from: postman-collection
+x-source: https://docs.macropoint.com/
+x-generated: '2026-10-20'
+x-customer-callbacks:
+- Cold Chain Temperature Alerts
+- Enhanced Shipment Status
+- Form Submits
+- Load Start Follow Along
+- Location Updates
+- Location and Temperature Updates
+- Mapped Partner
+- Notification Center Alerts
+- Order Messaging
+- Order Status
+- Schedule Alerts
+- Trip Events

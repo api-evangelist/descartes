@@ -1,0 +1,120 @@
+openapi: 3.2.0
+info:
+  title: Descartes MacroPoint Capacity Integration Search API
+  version: latest
+  description: Converted mechanically from the Postman collection Descartes publishes at https://capacitydocs.macropoint.com/ (method, URL, query keys, example bodies). Responses are not described by the collection.
+  contact:
+    name: Descartes MacroPoint
+    url: https://capacitydocs.macropoint.com/
+servers:
+- url: https://capacity-offer-api.macropoint.com
+- url: https://dw-export-capacity.macropoint.com
+- url: https://import-capacity.macropoint.com
+security:
+- basicAuth: []
+tags:
+- name: Search API
+paths:
+  /api/v3/LSPHistoryExportV3:
+    get:
+      operationId: getLSPHistoryExportV3
+      summary: Lane History Search
+      tags:
+      - Search API
+      x-source: https://capacitydocs.macropoint.com/
+      x-postman-examples:
+      - Lane History Search
+      - Lane History Search - Single Carrier Detailed Statistics
+      responses:
+        '200':
+          description: Success
+      description: 'The Export Search History request allows customers to request historical detailed statistics on a specified lane.
+
+
+        Production: https://dw-export-capacity.macropoint.com/api/v3/LSPHistoryExportV3
+
+
+        Request Structure
+
+
+        Title
+
+        Description
+
+
+        HTTP Method
+
+        GET
+
+
+        Authentication
+
+        Basic Auth
+
+
+        Content Type
+
+        APPLICATION/JSON
+
+
+        Response Format
+
+        JSON
+
+
+        Header
+
+        Encoded
+
+
+        Export History Query Params
+
+
+        Key
+
+        Value
+
+        Description
+
+        Required
+
+
+        request.origin.city
+
+        Origin City
+
+        Origin City
+
+        Yes
+
+
+        City and State Required if Postal Code is not passed
+
+
+        request.origin.state
+
+        Origin State
+
+        Origin State
+
+        Yes
+
+
+        City and State Required if Postal Code is not passed
+
+
+        request.origin.postal
+
+        Origin Po'
+      servers:
+      - url: https://dw-export-capacity.macropoint.com
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+x-generated-from: postman-collection
+x-source: https://capacitydocs.macropoint.com/
+x-generated: '2026-10-20'
+x-customer-callbacks:
+- Offer Callback

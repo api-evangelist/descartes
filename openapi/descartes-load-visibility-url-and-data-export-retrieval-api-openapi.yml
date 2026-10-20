@@ -1,0 +1,124 @@
+openapi: 3.2.0
+info:
+  title: Descartes MacroPoint Visibility Load Visibility URL and…
+  version: latest
+  description: Converted mechanically from the Postman collection Descartes publishes at https://docs.macropoint.com/ (method, URL, query keys, example bodies). Responses are not described by the collection.
+  contact:
+    name: Descartes MacroPoint
+    url: https://docs.macropoint.com/
+servers:
+- url: https://macropoint-lite.com
+- url: https://visibility.macropoint.com
+security:
+- basicAuth: []
+tags:
+- name: Load Visibility URL and Data Export Retrieval
+paths:
+  /api/1.0/tms/data/tmsgateway:
+    post:
+      operationId: postTmsDataTmsgateway
+      summary: Order Hyperlink
+      tags:
+      - Load Visibility URL and Data Export Retrieval
+      x-source: https://docs.macropoint.com/
+      x-postman-examples:
+      - Order Hyperlink
+      - Stop Specific Order Hyperlink
+      responses:
+        '200':
+          description: Success
+      description: 'The Order Hyperlink allows customers to receive a URL to view tracking details for a specified shipment
+
+
+        The URL received in the response can be embedded in the customers TMS/ERP by spawning off a new browser
+
+
+        Data accessible via the URL with or without a direct login to Descartes MacroPoint-Lite. Permissions are configurable on the account settings
+
+
+        Request Structure
+
+
+        Title
+
+        Description
+
+
+        HTTP Method
+
+        POST
+
+
+        Authentication
+
+        Basic Auth
+
+
+        Content Type
+
+        APPLICATION/XML
+
+
+        Response Format
+
+        XML
+
+
+        Header
+
+        Encoded
+
+
+        Order Hyperlink Tags
+
+
+        Title
+
+        Description
+
+        Example
+
+        Required
+
+
+        ResourceType
+
+        This must always be populated as OrderDetail
+
+        OrderDetail
+
+        Yes
+
+
+        Identifier
+
+        This can be the unique IDNumber that was supplied on the Create Order request, the Descartes MacroPoint generated OrderID, or Descartes MacroPoint TrackingRequestID from a successful'
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: string
+            example: "<TMSResourceRequest xmlns=\"http://macropoint-lite.com/xml/1.0\">\n <ResourceType>OrderDetail</ResourceType> \n <Identifier>{ID}</Identifier> \n</TMSResourceRequest>"
+      servers:
+      - url: https://macropoint-lite.com
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+x-generated-from: postman-collection
+x-source: https://docs.macropoint.com/
+x-generated: '2026-10-20'
+x-customer-callbacks:
+- Cold Chain Temperature Alerts
+- Enhanced Shipment Status
+- Form Submits
+- Load Start Follow Along
+- Location Updates
+- Location and Temperature Updates
+- Mapped Partner
+- Notification Center Alerts
+- Order Messaging
+- Order Status
+- Schedule Alerts
+- Trip Events

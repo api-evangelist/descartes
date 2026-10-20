@@ -1,0 +1,97 @@
+openapi: 3.2.0
+info:
+  title: Descartes MacroPoint Capacity Integration Export API
+  version: latest
+  description: Converted mechanically from the Postman collection Descartes publishes at https://capacitydocs.macropoint.com/ (method, URL, query keys, example bodies). Responses are not described by the collection.
+  contact:
+    name: Descartes MacroPoint
+    url: https://capacitydocs.macropoint.com/
+servers:
+- url: https://capacity-offer-api.macropoint.com
+- url: https://dw-export-capacity.macropoint.com
+- url: https://import-capacity.macropoint.com
+security:
+- basicAuth: []
+tags:
+- name: Export API
+paths:
+  /api/v3/LSPFindPowerExportV3:
+    get:
+      operationId: getLSPFindPowerExportV3
+      summary: Find Power
+      tags:
+      - Export API
+      x-source: https://capacitydocs.macropoint.com/
+      x-postman-examples:
+      - Find Power
+      - Single Carrier Statistics
+      responses:
+        '200':
+          description: Success
+      description: 'The Find Power API allows for companies to receive a listing of top carriers ranked based on the lane and projected open capacity of the shipment. Additional parameters can be sent on the call allowing to factor in expanded radiuses, extended history, sub equipment, and expanded hours around appointment times to open the search to a wider carrier pool.
+
+
+        Production: https://dw-export-capacity.macropoint.com/api/v3/LSPFindPowerExportV3
+
+
+        Request Structure
+
+
+        Title
+
+        Description
+
+
+        HTTP Method
+
+        GET
+
+
+        Authentication
+
+        Basic Auth
+
+
+        Content Type
+
+        APPLICATION/JSON
+
+
+        Response Format
+
+        JSON
+
+
+        Header
+
+        Encoded
+
+
+        Response Schema
+
+
+        Name
+
+        Name Description
+
+
+        AvgRatePerMile
+
+        The average rate per mile (excluding fuel) across all carriers in the Find Power results if included on Import API
+
+
+        Carriers
+
+        The list of carriers ranked in order of best match for the open lo'
+      servers:
+      - url: https://dw-export-capacity.macropoint.com
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+x-generated-from: postman-collection
+x-source: https://capacitydocs.macropoint.com/
+x-generated: '2026-10-20'
+x-customer-callbacks:
+- Offer Callback

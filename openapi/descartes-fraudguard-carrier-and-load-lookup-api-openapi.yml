@@ -1,0 +1,164 @@
+openapi: 3.2.0
+info:
+  title: Descartes MacroPoint Visibility FraudGuard Carrier and Load…
+  version: latest
+  description: Converted mechanically from the Postman collection Descartes publishes at https://docs.macropoint.com/ (method, URL, query keys, example bodies). Responses are not described by the collection.
+  contact:
+    name: Descartes MacroPoint
+    url: https://docs.macropoint.com/
+servers:
+- url: https://macropoint-lite.com
+- url: https://visibility.macropoint.com
+security:
+- basicAuth: []
+tags:
+- name: FraudGuard Carrier and Load Lookup
+paths:
+  /carrier-lookup:
+    options:
+      operationId: optionsCarrierlookup
+      summary: FraudGuard Lookup Hyperlink
+      tags:
+      - FraudGuard Carrier and Load Lookup
+      x-source: https://docs.macropoint.com/
+      responses:
+        '200':
+          description: Success
+      description: 'The FraudGuard details can also be retrieved via a link to view the carrier lookup results directly in Descartes MacroPoint.
+
+
+        To Create the link, build a URL from the carrier''s USDOT number or phone number. Your system then fills in the value for each carrier.
+
+
+        This feature requires additional account configuration to access. Please contact Descartes Service Desk or work with your implementation rep directly if you are interested.
+
+
+        URL Formats
+
+
+        Lookup by US DOT number:
+
+
+        https://visibility.macropoint.com/carrier-lookup?dotNumber={dotnumber}
+
+
+        EX: https://visibility.macropoint.com/carrier-lookup?dotNumber=9999999
+
+
+        Lookup by driver phone number:
+
+
+        https://visibility.macropoint.com/carrier-lookup?phoneNumber={phonenumber}
+
+
+        EX: https://visibility.macropoint.com/carrier-lookup?phoneNumber=8888888888
+
+
+        The carrier DOT and driver phone parameters should be numerica'
+      servers:
+      - url: https://visibility.macropoint.com
+  /api/1.0/fraudguard:
+    post:
+      operationId: postFraudguard
+      summary: FraudGuard DOT
+      tags:
+      - FraudGuard Carrier and Load Lookup
+      x-source: https://docs.macropoint.com/
+      x-postman-examples:
+      - FraudGuard DOT
+      - FraudGuard Phone Number
+      - FraudGuard Load Number
+      responses:
+        '200':
+          description: Success
+      description: 'The FraudGuard API allows customers to receive additional statistics for a specified carrier, driver, or shipment to proactively indicate fraudulent behavior
+
+
+        This feature requires additional account configuration to access. Please contact Descartes Service Desk or work with your implementation rep directly if you are interested.
+
+
+        Request Structure
+
+
+        Title
+
+        Description
+
+
+        HTTP Method
+
+        POST
+
+
+        Authentication
+
+        Basic Auth
+
+
+        Content Type
+
+        APPLICATION/JSON
+
+
+        Response Format
+
+        JSON
+
+
+        FraudGuard DOT Request Structure
+
+
+        Key
+
+        Description
+
+        Example Value
+
+        Required
+
+
+        dot_number
+
+        Carrier DOT Number
+
+        111111
+
+        Yes
+
+
+        FraudGuard DOT Response Structure
+
+
+        Top-Level Structure
+
+
+        <t'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+            example: "{\n    \"dot_number\" : \"1234567\"\n}\n"
+      servers:
+      - url: https://macropoint-lite.com
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+x-generated-from: postman-collection
+x-source: https://docs.macropoint.com/
+x-generated: '2026-10-20'
+x-customer-callbacks:
+- Cold Chain Temperature Alerts
+- Enhanced Shipment Status
+- Form Submits
+- Load Start Follow Along
+- Location Updates
+- Location and Temperature Updates
+- Mapped Partner
+- Notification Center Alerts
+- Order Messaging
+- Order Status
+- Schedule Alerts
+- Trip Events

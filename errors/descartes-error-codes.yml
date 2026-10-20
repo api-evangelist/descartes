@@ -1,0 +1,203 @@
+name: Descartes MacroPoint error codes
+generated: '2026-10-20'
+method: searched
+source: https://docs.macropoint.com/
+format: xml-or-json-envelope
+note: Result/error code tables copied from the Postman-published MacroPoint Visibility and Carrier integration docs.
+problems:
+- status: 201
+  code: '201'
+  title: Success
+  description: Order Created Successfully
+  source: https://docs.macropoint.com/
+- status: 400
+  code: '400'
+  title: Failure
+  description: Bad Request
+  source: https://docs.macropoint.com/
+- status: 401
+  code: '401'
+  title: Failure
+  description: Unauthorized
+  source: https://docs.macropoint.com/
+- code: '1000'
+  title: ValidationError
+  description: All argument/domain-rule validation exceptions
+  source: https://docs.macropoint.com/
+- code: '1001'
+  title: InsufficientFunds
+  description: The MacroPoint account does not even enough funds to pay for this transaction
+  source: https://docs.macropoint.com/
+- code: '1003'
+  title: PhoneOnBlackList
+  description: The driver has put themselves on the blacklist and is not agreeing to share their location with MacroPoint
+  source: https://docs.macropoint.com/
+- code: '2009'
+  title: CarrierNotFound
+  description: The carrier you have assigned is not partnered with your company in MacroPoint
+  source: https://docs.macropoint.com/
+- code: '3000'
+  title: FeatureNotProvisioned
+  description: The feature you are trying to use is has not been provisioned for your MacroPoint account
+  source: https://docs.macropoint.com/
+- code: '3001'
+  title: CustomerUDFKeyNotValid
+  description: The API call contains an invalid User Defined Key for Company
+  source: https://docs.macropoint.com/
+- code: '6100'
+  title: DuplicateThrottled
+  description: The request has been throttled due to it being an exact duplicate of a prior request within a short time period
+  source: https://docs.macropoint.com/
+- code: '9999'
+  title: Unexpected Error
+  description: An unexpected error has occurred
+  source: https://docs.macropoint.com/
+- code: '2000'
+  title: UniqueIdNotValid
+  description: The Tracking Request GUID or Order GUID passed is not valid
+  source: https://docs.macropoint.com/
+- code: '2001'
+  title: OrderExpired
+  description: The order that you are attempting to update is expired or complete
+  source: https://docs.macropoint.com/
+- code: '2003'
+  title: MobileNumberNotUpdatable
+  description: The number has not been updated
+  source: https://docs.macropoint.com/
+- code: '2007'
+  title: CustomScheduleNotUpdatable
+  description: The custom shedule is unabl
+  source: https://docs.macropoint.com/
+- code: '2008'
+  title: TrackingRequestDeleted
+  description: The tracking request you are trying to update has been removed and cannot be updated
+  source: https://docs.macropoint.com/
+- code: '2010'
+  title: CarrierNotChanged
+  description: The carrier change is not allowed due to the Tracking Request already being assigned to another carrier
+  source: https://docs.macropoint.com/
+- code: '6200'
+  title: ThrottledForImmediateChange
+  description: Change received immediately after order creation
+  source: https://docs.macropoint.com/
+- status: 200
+  code: '200'
+  title: Success
+  description: Stop Order successfully received
+  source: https://docs.macropoint.com/
+- code: '1009'
+  title: Failure
+  description: Custom text indicating that validation URL was unavailable
+  source: https://docs.macropoint.com/
+- code: '2004'
+  title: MobileUserInactive
+  description: The number you are trying to message is not active in MacroPoint
+  source: https://docs.macropoint.com/
+- code: '2005'
+  title: OrderMessageFeatureNotProvisioned
+  description: Order messaging is not enabled for your account
+  source: https://docs.macropoint.com/
+- code: '2006'
+  title: OrderMessageUrlEmpty
+  description: The endpoint to post messages from driver to you is not configured for your account
+  source: https://docs.macropoint.com/
+- code: '355'
+  title: Albania
+  description: ALB
+  source: https://docs.macropoint.com/
+- code: '376'
+  title: Andorra
+  description: AND
+  source: https://docs.macropoint.com/
+- code: '375'
+  title: Belarus
+  description: BLR
+  source: https://docs.macropoint.com/
+- code: '387'
+  title: Bosnia and Herzegovina
+  description: BIH
+  source: https://docs.macropoint.com/
+- code: '359'
+  title: Bulgaria
+  description: BGR
+  source: https://docs.macropoint.com/
+- code: '385'
+  title: Croatia
+  description: HRV
+  source: https://docs.macropoint.com/
+- code: '420'
+  title: Czech Republic (Czechia)
+  description: CZE
+  source: https://docs.macropoint.com/
+- code: '372'
+  title: Estonia
+  description: EST
+  source: https://docs.macropoint.com/
+- code: '358'
+  title: Finland
+  description: FIN
+  source: https://docs.macropoint.com/
+- code: '354'
+  title: Iceland
+  description: ISL
+  source: https://docs.macropoint.com/
+- code: '353'
+  title: Ireland
+  description: IRL
+  source: https://docs.macropoint.com/
+- code: '371'
+  title: Latvia
+  description: LVA
+  source: https://docs.macropoint.com/
+- code: '423'
+  title: Liechtenstein
+  description: LIE
+  source: https://docs.macropoint.com/
+- code: '370'
+  title: Lithuania
+  description: LTU
+  source: https://docs.macropoint.com/
+- code: '352'
+  title: Luxembourg
+  description: LUX
+  source: https://docs.macropoint.com/
+- code: '356'
+  title: Malta
+  description: MLT
+  source: https://docs.macropoint.com/
+- code: '373'
+  title: Moldova
+  description: MDA
+  source: https://docs.macropoint.com/
+- code: '377'
+  title: Monaco
+  description: MCO
+  source: https://docs.macropoint.com/
+- code: '382'
+  title: Montenegro
+  description: MNE
+  source: https://docs.macropoint.com/
+- code: '389'
+  title: Macedonia
+  description: MKD
+  source: https://docs.macropoint.com/
+- code: '351'
+  title: Portugal
+  description: PRT
+  source: https://docs.macropoint.com/
+- code: '381'
+  title: Serbia
+  description: SRB
+  source: https://docs.macropoint.com/
+- code: '421'
+  title: Slovakia
+  description: SVK
+  source: https://docs.macropoint.com/
+- code: '386'
+  title: Slovenia
+  description: SVN
+  source: https://docs.macropoint.com/
+- code: '380'
+  title: Ukraine
+  description: UKR
+  source: https://docs.macropoint.com/

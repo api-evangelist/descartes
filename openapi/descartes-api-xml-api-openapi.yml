@@ -1,0 +1,511 @@
+openapi: 3.2.0
+info:
+  title: Descartes MacroPoint Visibility Carrier Integration API…
+  version: latest
+  description: Converted mechanically from the Postman collection Descartes publishes at https://carrierdocs.macropoint.com/ (method, URL, query keys, example bodies). Responses are not described by the collection.
+  contact:
+    name: Descartes MacroPoint
+    url: https://carrierdocs.macropoint.com/
+servers:
+- url: https://macropoint-lite.com
+security:
+- basicAuth: []
+tags:
+- name: API - XML
+paths:
+  /api/1.0/tms/data/location:
+    post:
+      operationId: postTmsDataLocation
+      summary: Location Update
+      tags:
+      - API - XML
+      x-source: https://carrierdocs.macropoint.com/
+      x-postman-examples:
+      - Location Update
+      - Location + Temperature Update
+      - Location Update
+      - Location + Temperature Update
+      responses:
+        '200':
+          description: Success
+      description: 'Location Update API calls allow carriers to send in transit location updates to customers.
+
+
+        Request Structure
+
+
+        Title
+
+        Description
+
+
+        HTTP Method
+
+        POST
+
+
+        Authentication
+
+        Basic Auth
+
+
+        Content Type
+
+        APPLICATION/XML
+
+
+        Response Format
+
+        XML
+
+
+        Header
+
+        Encoded
+
+
+        Data Throttle
+
+
+        Location updates will be throttled if sent more frequently than 5 minutes per LoadID
+
+
+        Location Update Elements
+
+
+        Element
+
+        Description
+
+        Required
+
+
+        Sender
+
+        Captures carrier identifier
+
+        Yes
+
+
+        Requestor
+
+        Captures customer information
+
+        Yes
+
+
+        AllowAccessFrom
+
+        Captures customer information
+
+        Yes
+
+
+        Location
+
+        Position of the in transit update'
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: string
+            example: "<TMSLocationData xmlns=\"http://macropoint-lite.com/xml/1.0\">\n  <Sender>\n    <LoadID>ABC123</LoadID>\n  </Sender>\n  <Requestor>\n    <MPID>123456</MPID>\n    <LoadID>Load-123</LoadID>\n  </Requestor>\n  <AllowAccessFrom>\n    <MPID>123456</MPID>\n  </AllowAccessFrom>\n  <Location>\n    <Coordinates>\n      <Latitude>41.396900</Latitude>\n      <Longitude>-81.662491</Longitude>\n    </Coordinates>\n    <CreatedDateTime>2020-01-01T12:00:00Z</CreatedDateTime>\n  </Location>\n</TMSLocationData>"
+  /api/1.0/tms/data/stopevent:
+    post:
+      operationId: postTmsDataStopevent
+      summary: Event Update
+      tags:
+      - API - XML
+      x-source: https://carrierdocs.macropoint.com/
+      x-postman-examples:
+      - Event Update
+      - Event Update
+      responses:
+        '200':
+          description: Success
+      description: 'Event Update API calls allow carriers to send arrival and departure messages to customers.
+
+
+        Request Structure
+
+
+        Title
+
+        Description
+
+
+        HTTP Method
+
+        POST
+
+
+        Authentication
+
+        Basic Auth
+
+
+        Content Type
+
+        APPLICATION/XML
+
+
+        Response Format
+
+        XML
+
+
+        Header
+
+        Encoded
+
+
+        Event Update Elements
+
+
+        Element
+
+        Description
+
+        Required
+
+
+        Sender
+
+        Captures carrier identifier
+
+        Yes
+
+
+        Requestor
+
+        Captures customer information
+
+        Yes
+
+
+        Stop
+
+        Captures stop information of load
+
+        Yes
+
+
+        Event
+
+        Captures event type and time
+
+        Yes
+
+
+        Event Update Sender Tags
+
+
+        <thead'
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: string
+            example: "<TMSStopEventData xmlns=\"http://macropoint-lite.com/xml/1.0\">\n     <Sender>\n          <LoadID>ABC123</LoadID>\n     </Sender>\n     <Requestor>\n          <MPID>123456</MPID>\n          <LoadID>Load-123</LoadID>\n     </Requestor>\n     <Stop>\n     <Name>Shipper</Name>\n          <StopType>PickUp</StopType>\n          <Address>\n               <Line1>6050 Oak Tree Blvd</Line1>\n               <City>Independence></City>\n               <StateOrProvince>OH</StateOrProvince>\n               <PostalCode>44131</PostalCode>\n          </Address>\n          <SequenceNumber>1</SequenceNumber>\n     </Stop>\n     <Event>\n          <Name>Arrived</Name>\n          <CompletedDateTime>2020-01-01T12:00:00Z</CompletedDateTime>\n     </Event>\n</TMSStopEventData>"
+  /api/1.0/order/trackingnumberassignment:
+    post:
+      operationId: postOrderTrackingnumberassignment
+      summary: Tracking Assignment
+      tags:
+      - API - XML
+      x-source: https://carrierdocs.macropoint.com/
+      x-postman-examples:
+      - Tracking Assignment
+      - Tracking Assignment
+      responses:
+        '200':
+          description: Success
+      description: 'Tracking Assignment API calls allow carriers to assign driver information to a tracking request
+
+
+        Tracking Assignment calls should only be used if you cannot pass Location Updates for loads. If an ELD/GPS connection has already been established to MacroPoint you may automate the assignment of vehicle/trailer IDs via this call or you can assign a Mobile number if no connection exists with MacroPoint.
+
+
+        Request Structure
+
+
+        Title
+
+        Description
+
+
+        HTTP Method
+
+        POST
+
+
+        Authentication
+
+        Basic Auth
+
+
+        Content Type
+
+        APPLICATION/XML
+
+
+        Response Format
+
+        XML
+
+
+        Header
+
+        Encoded
+
+
+        Tracking Assignment Update Elements
+
+
+        Element
+
+        Description
+
+        Required
+
+
+        Number
+
+        Captures the number type and ID used to track
+
+        Yes
+
+
+        Requestor
+
+        Captures customer information
+
+        Yes'
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: string
+            example: "<TrackingNumberData xmlns=\"http://macropoint-lite.com/xml/1.0\">\n <Number Type=\"VehicleID\">1234</Number>\n <Requestor>\n\t<MPID>123456</MPID>\n\t<LoadID>Load-123</LoadID>\n </Requestor>\n</TrackingNumberData>"
+  /api/1.0/tms/data/shipmentstatus:
+    post:
+      operationId: postTmsDataShipmentstatus
+      summary: Enhanced Shipment Status
+      tags:
+      - API - XML
+      x-source: https://carrierdocs.macropoint.com/
+      x-postman-examples:
+      - Enhanced Shipment Status
+      - Enhanced Shipment Status
+      responses:
+        '200':
+          description: Success
+      description: 'Enhanced Shipment Status API calls allow carriers to supply detailed status messages to customers.
+
+
+        Request Structure
+
+
+        Title
+
+        Description
+
+
+        HTTP Method
+
+        POST
+
+
+        Authentication
+
+        Basic Auth
+
+
+        Content Type
+
+        APPLICATION/XML
+
+
+        Response Format
+
+        XML
+
+
+        Header
+
+        Encoded
+
+
+        Enhanced Shipment Status Elements
+
+
+        Element
+
+        Description
+
+        Required
+
+
+        Sender
+
+        Captures carrier identifier
+
+        Yes
+
+
+        Requestor
+
+        Captures customer information
+
+        Yes
+
+
+        Enhanced Shipment Status Tags
+
+
+        Type
+
+        Description
+
+        Example
+
+        Required
+
+
+        SCAC
+
+        Company''s SCAC
+
+        ABCD
+
+        N'
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: string
+            example: "<?xml version=\"1.0\"?>\n<TMSShipmentStatus xmlns=\"http://macropoint-lite.com/xml/1.0\">\n   <Sender>\n    <LoadID>{{SenderLoadID}}</LoadID>\n  </Sender>\n  <Requestor>\n    <MPID>{{RequestorMPID}}</MPID>\n    <LoadID>{{RequestorLoadID}}</LoadID>\n  </Requestor>\n    <ShipmentStatus>\n        <SCAC>{CarrierCode}</SCAC>\n        <Type>{Estimated or Actual}</Type>\n        <StatusMessageDetail>{StatusMessageDetail}</StatusMessageDetail>\n        <CreatedDateTime>{CreatedDateTime}</CreatedDateTime>\n        <City>{City}</City>\n        <State>{State}</State>\n        <Country>{Country}</Country>\n        <EventETA>{EventETA}</EventETA>\n    </ShipmentStatus>\n</TMSShipmentStatus>\n"
+  /api/1.0/TMS/Data/FormUpload:
+    post:
+      operationId: postTMSDataFormUpload
+      summary: Form/Document Upload
+      tags:
+      - API - XML
+      x-source: https://carrierdocs.macropoint.com/
+      x-postman-examples:
+      - Form/Document Upload
+      - Form/Document Upload
+      responses:
+        '200':
+          description: Success
+      description: 'Carrier API form/document upload
+
+
+        The FormUpload API allows for the submission of associated shipment documentation, images or related forms.
+
+
+        Examples:
+
+
+        BOLs
+
+
+        PODs
+
+
+        Delivery proof images
+
+
+        Request Structure
+
+
+        Title
+
+        Description
+
+
+        HTTP Method
+
+        POST
+
+
+        Authentication
+
+        Basic Auth
+
+
+        Content Type
+
+        APPLICATION/XML
+
+
+        Response Format
+
+        XML
+
+
+        Header
+
+        Encoded
+
+
+        Form Upload Elements
+
+
+        Element
+
+        Description
+
+        Required
+
+
+        Sender
+
+        Captures carrier identifier
+
+        Yes
+
+
+        Requestor
+
+        Captures customer information
+
+        Yes
+
+
+        StopType
+
+        Captures the type of Stop (PickUp or DropOff)
+
+        No
+
+
+        Event
+
+        Capatures the type of event (Arrived or Departed)
+
+        No
+
+
+        Elements
+
+        Captures the document details
+
+        Yes
+
+
+        </tbody'
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: string
+            example: "<?xml version=\"1.0\"?>\n<TMSFormData\n\txmlns=\"http://macropoint-lite.com/xml/1.0\">\n\t<Sender>\n\t\t<LoadID>ABC123</LoadID>\n\t</Sender>\n\t<Requestor>\n\t\t<MPID>123456</MPID>\n\t\t<LoadID>Load-123</LoadID>\n\t</Requestor>\n    <StopType>DropOff</StopType><!-- Optional field -->\n    <Event>Arrived</Event><!-- Optional field -->\n\t<Elements>\n\t\t<Element>\n\t\t\t<Id>POD</Id>\n\t\t\t<Name>POD</Name>\n\t\t\t<Type>Binary</Type>\n\t\t\t<MimeType>image/png</MimeType>\n\t\t\t<Data Encoding=\"Base64\">{{base64EncodedFile}}</Data>\n\t\t</Element>\n\t</Elements>\n</TMSFormData>"
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+x-generated-from: postman-collection
+x-source: https://carrierdocs.macropoint.com/
+x-generated: '2026-10-20'

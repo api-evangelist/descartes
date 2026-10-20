@@ -1,0 +1,238 @@
+openapi: 3.2.0
+info:
+  title: Descartes MacroPoint Capacity Integration Import API
+  version: latest
+  description: Converted mechanically from the Postman collection Descartes publishes at https://capacitydocs.macropoint.com/ (method, URL, query keys, example bodies). Responses are not described by the collection.
+  contact:
+    name: Descartes MacroPoint
+    url: https://capacitydocs.macropoint.com/
+servers:
+- url: https://capacity-offer-api.macropoint.com
+- url: https://dw-export-capacity.macropoint.com
+- url: https://import-capacity.macropoint.com
+security:
+- basicAuth: []
+tags:
+- name: Import API
+paths:
+  /api/v2/Carrier:
+    post:
+      operationId: postCarrier
+      summary: Carrier Import
+      tags:
+      - Import API
+      x-source: https://capacitydocs.macropoint.com/
+      responses:
+        '200':
+          description: Success
+      description: 'Carrier Import API request allows customers to post complete carrier lists
+
+
+        Request Structure
+
+
+        Title
+
+        Description
+
+
+        HTTP Method
+
+        POST
+
+
+        Authentication
+
+        Basic Auth
+
+
+        Content Type
+
+        APPLICATION/JSON
+
+
+        Response Format
+
+        JSON
+
+
+        Header
+
+        Encoded
+
+
+        Carrier Import Request Schema
+
+
+        Name
+
+        Name Description
+
+        Value Example
+
+        Required
+
+
+        Status
+
+        Indicates carrier''s active status within company
+
+        Active
+
+        Yes
+
+
+        DOTNumber
+
+        Registered FMCSA USDOT number of carrier
+
+        123456
+
+        Yes
+
+
+        MCNumber
+
+        Registered FMCSA MC Number of carrier. Format: MC prefix required, six digit number required. If carrier has an MC number less than six digits leading zeros must prefix number
+
+        MC987654
+
+        Yes
+
+
+        Name
+
+        Carrier name
+
+        Awesome Trucking Co.
+
+        Yes
+
+
+        OwnerName
+
+        Account'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+            example: "{\n  \"Carriers\": [\n    {\n      \"Status\": \"Active\",\n      \"DOTNumber\": \"1000877\",\n      \"MCNumber\": \"\",\n      \"Name\": \"PostMan Test\",\n      \"CarrierContact\": {\n        \"Name\": \"Post man\",\n        \"Email\": \"post@man.com\",\n        \"Phone\": \"123-456-789\",\n        \"PhoneExtension\": \"\"\n      },\n      \"OwnerName\": \"Eva\",\n      \"DNU\":\"no\",\n      \"Favorite\":\"no\"\n      },\n      {\n      \"Status\": \"Active\",\n      \"DOTNumber\": \"1000222\",\n      \"MCNumber\": \"\",\n      \"Name\": \"PostMan Test\",\n      \"CarrierContact\": {\n        \"Name\": \"Post man\",\n        \"Email\": \"post@man.com\",\n        \"Phone\": \"123-456-789\",\n        \"PhoneExtension\": \"\"\n      },\n      \"OwnerName\": \"Eva\",\n       \"DNU\":\"no\",\n      \"Favorite\":\"no\"\n    }\n  ],\n  \"SessionId\": \"\",\n  \"RequestId\": \"\"\n}"
+      servers:
+      - url: https://import-capacity.macropoint.com
+  /api/v2/Load:
+    post:
+      operationId: postLoad
+      summary: Load Import
+      tags:
+      - Import API
+      x-source: https://capacitydocs.macropoint.com/
+      responses:
+        '200':
+          description: Success
+      description: 'Load Import API request allows customers to post all load types
+
+
+        Load Types: Open, Booked, & Delivered
+
+        The more information supplied the better the user experience
+
+
+        Request Structure
+
+
+        Title
+
+        Description
+
+
+        HTTP Method
+
+        POST
+
+
+        Authentication
+
+        Basic Auth
+
+
+        Content Type
+
+        APPLICATION/JSON
+
+
+        Response Format
+
+        JSON
+
+
+        Header
+
+        Encoded
+
+
+        Load Import Request Schema
+
+
+        Name
+
+        Name Description
+
+        Format
+
+        Value Example
+
+        Required
+
+        Character limit
+
+        *Denotes truncation
+
+
+        LoadID
+
+        Customer unique load identifer
+
+        String
+
+        123456
+
+        Yes
+
+
+        StopNumber
+
+        The unique Stop Number for a multleg shipment. Each leg of the shipment should include an origin and destination.
+
+        Number
+
+        1
+
+        No
+
+
+        MPLoadID
+
+        Descartes MacroPoint Visilbity MPOrderID used for tracking
+
+        String
+
+        FB93D3FE54674'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+            example: "{\n  \"Loads\": [\n    {\n      \"LoadId\": \"SampleLoadID\",\n      \"StopNumber\": 1, \n      \"MPLoadId\": \"\",\n       \"Origin\": {\n        \"Street1\": \"6050 Oak Tree Blvd\",\n        \"City\": \"Independence\",\n        \"State\": \"OH\",\n        \"Postal\": \"44131\",\n        \"Country\": \"US\",\n        \"Latitude\": 41.39699,\n        \"Longitude\": -81.66259,\n        \"DateTime\": \"2025-09-18T13:00:00\",\n        \"EndDateTime\": \"2025-09-18T13:00:00\"\n      },\n      \"Destination\": {\n         \"Street1\": \"120 Randall Dr\",\n        \"City\": \"Waterloo\",\n        \"State\": \"ON\",\n        \"Postal\": \"N2V 1C6\",\n        \"Country\": \"CA\",\n        \"Latitude\": 43.50570,\n        \"Longitude\": -80.55289,\n        \"DateTime\": \"2025-09-19T14:00:00\",\n        \"EndDateTime\": \"2025-09-19T15:00:00\"\n      },\n      \"Miles\": 310,\n      \"EquipmentTypes\": [\n        \"Reefer\"\n      ],\n      \"CoverageRegion\": \"Midwest\",\n      \"Commodity\": \"Fresh Food\",\n      \"SuggestedMarketRate\": 1000,\n      \"MaxBuyRate\": 1500,\n      \"CarrierDOTNumber\": \"\",\n      \"MCNumber\": \"\",\n      \"TruckIdentifier\": \"\",\n      \"RatePerMileExcludingFuel\": 0,\n      \"ItemizedStandardAccessorialCharges\": 0,\n      \"DeliveredDateTime\": \"\",\n      \"Weight\": \"40000\",\n      \"DropTrailerAtOrigin\": false,\n      \"DropTrailerAtDestination\": false,\n      \"Hazmat\": false,\n      \"HazmatType\": \"\",\n      \"TSACert\": false,\n      \"TWICRequired\": false,\n      \"CTPATCert\": false,\n      \"BlockingAndBracing\": true,\n      \"BlockingAndBracingType\": \"\",\n      \"LoadDetails\": \"Clean, dry trailer\",\n      \"Status\": \"Available\",\n      \"ChildCompanyCode\": \"\",\n      \"OwnerName\": \"Rep Name\",\n      \"OwnerEmail\": \"Rep Email\",\n      \"OwnerPhone\": \"Rep Phone\"\n    }\n  ],\n  \"SessionId\": \"\",\n  \"RequestId\": \"\"\n}"
+      servers:
+      - url: https://import-capacity.macropoint.com
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+x-generated-from: postman-collection
+x-source: https://capacitydocs.macropoint.com/
+x-generated: '2026-10-20'
+x-customer-callbacks:
+- Offer Callback

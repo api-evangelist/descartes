@@ -1,0 +1,44 @@
+{
+  "provider": "descartes",
+  "sources": [
+    "descartes-macropoint-capacity-openapi.yml",
+    "descartes-macropoint-carrier-openapi.yml",
+    "descartes-macropoint-visibility-openapi.yml"
+  ],
+  "outputs": [
+    "descartes-3rd-party-tms-integration-api-openapi.yml",
+    "descartes-custom-integration-api-openapi.yml",
+    "descartes-export-api-api-openapi.yml",
+    "descartes-import-api-api-openapi.yml",
+    "descartes-search-api-api-openapi.yml",
+    "descartes-api-xml-api-openapi.yml",
+    "descartes-carrier-data-connection-and-communication-api-openapi.yml",
+    "descartes-fraudguard-carrier-and-load-lookup-api-openapi.yml",
+    "descartes-load-visibility-order-creation-xml-api-openapi.yml",
+    "descartes-load-visibility-url-and-data-export-retrieval-api-openapi.yml"
+  ],
+  "archived": [
+    "archived openapi/descartes-macropoint-capacity-openapi.yml",
+    "archived openapi/descartes-macropoint-carrier-openapi.yml",
+    "archived openapi/descartes-macropoint-visibility-openapi.yml"
+  ],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "descartes-macropoint-capacity-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "descartes-macropoint-capacity-openapi.yml: declared missing tag: 3rd Party TMS Integration",
+    "descartes-macropoint-capacity-openapi.yml: declared missing tag: Custom Integration",
+    "descartes-macropoint-capacity-openapi.yml: declared missing tag: Export API",
+    "descartes-macropoint-capacity-openapi.yml: declared missing tag: Import API",
+    "descartes-macropoint-capacity-openapi.yml: declared missing tag: Search API",
+    "descartes-macropoint-carrier-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "descartes-macropoint-carrier-openapi.yml: declared missing tag: API - XML",
+    "descartes-macropoint-visibility-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "descartes-macropoint-visibility-openapi.yml: declared missing tag: Carrier Data Connection and Communication",
+    "descartes-macropoint-visibility-openapi.yml: declared missing tag: FraudGuard Carrier and Load Lookup",
+    "descartes-macropoint-visibility-openapi.yml: declared missing tag: Load Visibility Order Creation - XML",
+    "descartes-macropoint-visibility-openapi.yml: declared missing tag: Load Visibility URL and Data Export Retrieval",
+    "apis.yml register: written (+10 apis, 13 total)"
+  ],
+  "skipped": []
+}

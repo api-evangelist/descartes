@@ -1,0 +1,313 @@
+openapi: 3.2.0
+info:
+  title: Descartes MacroPoint Visibility Carrier Data Connection and…
+  version: latest
+  description: Converted mechanically from the Postman collection Descartes publishes at https://docs.macropoint.com/ (method, URL, query keys, example bodies). Responses are not described by the collection.
+  contact:
+    name: Descartes MacroPoint
+    url: https://docs.macropoint.com/
+servers:
+- url: https://macropoint-lite.com
+- url: https://visibility.macropoint.com
+security:
+- basicAuth: []
+tags:
+- name: Carrier Data Connection and Communication
+paths:
+  /api/1.0/carrier/carrierwishlist:
+    post:
+      operationId: postCarrierCarrierwishlist
+      summary: Carrier Wishlist
+      tags:
+      - Carrier Data Connection and Communication
+      x-source: https://docs.macropoint.com/
+      responses:
+        '200':
+          description: Success
+      description: 'The Carrier Wishlist API allows customers to send in their active carrier list via API bulk file import once per 24 hour time period
+
+
+        Upon successful upload of the customers active carrier list in it''s entirety, only changes or additions to carriers should be sent. Desired cadence can be determined by the customer but should not exceed once per 24 hour time period.
+
+
+        Required Data to successfully import desired carriers.
+
+
+        Note: Data is comma separted
+
+
+        Column Name
+
+        Description
+
+        Example
+
+        Required
+
+
+        DOT Number
+
+        Unique Carrier USDOT Number
+
+        12345
+
+        Yes
+
+
+        Mapping Code
+
+        Unique Carrier ID from TMS
+
+        1234567
+
+        Yes
+
+
+        Carrier Name
+
+        Carrier Name
+
+        Bobs Trucking
+
+        Yes
+
+
+        MC Number
+
+        Unique Carrier MC Number
+
+        MC-1234
+
+        No
+
+
+        MX Number
+
+        Unique Carrier MX Number
+
+        MX-1234
+
+        No
+
+
+        First Name
+
+        Carrier Contact First Name
+
+        John
+
+        Yes
+
+
+        Last Name
+
+        Carrier Contact Last Name</'
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: string
+            example: '<BulkFile xmlns="http://macropoint-lite.com/xml/1.0" >
+
+              <FileData>
+
+              <![CDATA[DotNumber,MappingCode,CarrierName,McNumber,MxNumber,FirstName,LastName,Email,Phone,Notes
+
+              2584889,BTRK,Billy Trucking INC,,,Joe,Smith,carrier1@carrier.com,5555555555,Great Carrier]]>
+
+              </FileData>
+
+              </BulkFile>'
+      servers:
+      - url: https://macropoint-lite.com
+  /api/1.0/carrier/requestpartnerstatus/{CarrierID}:
+    get:
+      operationId: getCarrierRequestpartnerstatusCarrierID
+      summary: Good Truck API
+      tags:
+      - Carrier Data Connection and Communication
+      x-source: https://docs.macropoint.com/
+      responses:
+        '200':
+          description: Success
+      description: 'The Good Truck API is an add on to our existing Partner Status API
+
+
+        A successful response will only be provided if the Good Truck API is enabled to your MacroPoint account and the carrier is correctly partnered to the Customer in Descartes MacroPoint-Lite which includes the CarrierID code being present
+
+
+        Request Structure
+
+
+        Title
+
+        Description
+
+
+        HTTP Method
+
+        GET
+
+
+        Authentication
+
+        Basic Auth
+
+
+        Content Type
+
+        APPLICATION/XML
+
+
+        Response Format
+
+        XML
+
+
+        Header
+
+        Encoded
+
+
+        Example Request:
+
+
+        https://macropoint-lite.com/api/1.0/carrier/requestpartnerstatus/ABC
+
+
+        A successful response will include the following:
+
+
+        Status Element:
+
+
+        Tag
+
+        Description
+
+        Example
+
+
+        Status
+
+        Status confirmation if the Good Truck API request was'
+      parameters:
+      - name: CarrierID
+        in: path
+        required: true
+        schema:
+          type: string
+      servers:
+      - url: https://macropoint-lite.com
+  /api/1.0/orders/SendMessage:
+    post:
+      operationId: postOrdersSendMessage
+      summary: Send Message
+      tags:
+      - Carrier Data Connection and Communication
+      x-source: https://docs.macropoint.com/
+      responses:
+        '200':
+          description: Success
+      description: 'The Send Message allows customers to send a message to a driver for a specified shipment
+
+
+        Load must be tracking via the MacroPoint for Truckers App and customer account configured for order messaging in order to leverage this functionality
+
+
+        The message will appear in the MacroPoint for Truckers App under the associated tracking session
+
+
+        Request Structure
+
+
+        Title
+
+        Description
+
+
+        HTTP Method
+
+        POST
+
+
+        Authentication
+
+        Basic Auth
+
+
+        Content Type
+
+        APPLICATION/XML
+
+
+        Response Format
+
+        XML
+
+
+        Header
+
+        Encoded
+
+
+        Send Message Tags
+
+
+        Title
+
+        Description
+
+        Example
+
+        Required
+
+
+        OrderID
+
+        This is the unique OrderID or TrackingRequestID that was supplied on a successful Create Order request response
+
+        424C9CCF68C34DBBA40F017A11DB92BE
+
+        Yes
+
+
+        Text
+
+        Message you are sending to the driver
+
+        Please let me know if you will be late
+
+        Yes
+
+
+        <h2 id='
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: string
+            example: "<Message xmlns=\"http://macropoint-lite.com/xml/1.0\">\n <OrderID>OrderID</OrderID> \n <Text>Message to driver</Text> \n</Message>"
+      servers:
+      - url: https://macropoint-lite.com
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+x-generated-from: postman-collection
+x-source: https://docs.macropoint.com/
+x-generated: '2026-10-20'
+x-customer-callbacks:
+- Cold Chain Temperature Alerts
+- Enhanced Shipment Status
+- Form Submits
+- Load Start Follow Along
+- Location Updates
+- Location and Temperature Updates
+- Mapped Partner
+- Notification Center Alerts
+- Order Messaging
+- Order Status
+- Schedule Alerts
+- Trip Events
