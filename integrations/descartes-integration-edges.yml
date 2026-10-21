@@ -17,6 +17,9 @@ checked:
 - https://n8n.io/integrations/descartes/
 - https://zapier.com/apps/descartes-systems-group/integrations
 - https://zapier.com/apps/descartes/integrations
+- https://advertising.amazon.com/partners/directory
+- https://sellercentral.amazon.com/gspn
+- https://sellercentral.amazon.com/selling-partner-appstore
 summary: null
 marketplace_apps: []
 edges:
@@ -94,4 +97,19 @@ edges:
     detected: '2026-10-15'
   detected_by: sweep-einvoicing-tax.py
   first_seen: '2026-10-15'
+- partner_name: Amazon Selling Partner Appstore
+  partner: amazon-seller-central
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://sellercentral.amazon.com/selling-partner-appstore/dp/amzn1.sp.solution.5afd4013-5a33-414d-9990-a135ce229235
+  mirror_of: amazon-seller-central/integrations/amazon-seller-central-integration-edges.yml
+  apps:
+  - Descartes API for GLN
+  detected: '2026-10-21'
+  detected_by: sweep-amazon-sp-api-appstore.py
 templates: []
