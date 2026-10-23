@@ -69,6 +69,9 @@ maintainers:
   email: kin@apievangelist.com
 
 common:
+- type: CapabilityMap
+  url: capabilities/descartes-capability-edges.yml
+  name: Descartes Systems Group Business Capability Map
 - type: Pricing
   url: http://www.descartes.com/resources/blog/pricing-guide-to-denied-party-screening-software-solutions
 - type: AgenticAccess
