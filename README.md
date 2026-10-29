@@ -1,4 +1,4 @@
-# Descartes Systems Group (descartes)
+# Descartes Systems Group
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,89 +64,133 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-The Descartes Systems Group is a global logistics and supply chain software company whose cloud-based Global Logistics Network connects manufacturers, distributors, carriers, brokers, and freight forwarders. Descartes delivers its capabilities across a large family of products - real-time freight visibility and carrier sourcing (Descartes MacroPoint), customs and regulatory compliance and trade content (Descartes CustomsInfo, NetCHB), global trade intelligence (Descartes Datamyne), routing and mobile, and B2B connectivity and messaging.
+The Descartes Systems Group is a global logistics and supply chain software company whose cloud-based Global Logistics Network connects manufacturers, distributors, carriers, brokers, and freight forwarders. Descartes delivers its capabilities across a large family of products - real-time freight visibility and carrier sourcing (Descartes MacroPoint), customs and regulatory compliance and trade content (Descartes CustomsInfo, NetCHB), global trade intelligence (Descartes Datamyne), routing and mobile, and B2B connectivity and messaging. Descartes exposes APIs on a per-product basis: the MacroPoint visibility, capacity, and carrier integration APIs are publicly documented (customer credentials required), while trade content, trade data, and B2B connectivity APIs are provisioned through the Descartes API portal or a sales/contract engagement. Most API access is customer/partner-gated rather than open self-service signup.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/descartes/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/descartes/refs/heads/main/apis.yml)
+**Areas:** Logistics · Supply Chain · Freight Visibility · Shipment Tracking · Customs Compliance · Global Trade · Trade Content · Carrier Sourcing
 
-## Access Model (Read This First)
+## Descartes Systems Group on APIs.io
 
-Descartes exposes APIs **per-product**, and access is **customer/partner-gated rather than open self-service**:
+Everything profiled for Descartes Systems Group is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/descartes/](https://apis.io/providers/descartes/)** — or go straight to one of the APIs or properties below.
 
-- The **MacroPoint** APIs (Visibility, Capacity, Carrier) are publicly documented at `docs.macropoint.com`, `capacitydocs.macropoint.com`, and `carrierdocs.macropoint.com`, with a public `macropoint-telematics` Postman workspace - but calling them requires **MacroPoint customer credentials** (HTTP Basic auth). The Visibility API is XML over HTTPS at base `https://macropoint-lite.com/api/1.0`.
-- **CustomsInfo Trade Content** and **Datamyne Global Trade Data** APIs are arranged via **subscription/contract**; there is no public self-service endpoint reference.
-- The **Descartes API portal** at `api.descartes.com` lets developers browse APIs and **sign up/request approval to acquire keys** for B2B connectivity and other product APIs.
+### APIs (13)
 
-Where a full endpoint surface is not publicly published, this entry **models** the operations from Descartes' own documentation and product materials and flags them as `endpointsModeled` rather than fabricating specific paths. Only the MacroPoint Visibility `createorder` and `location` operations are listed as confirmed.
+- [Descartes CustomsInfo Trade Content API](https://apis.io/apis/descartes/descartes-customsinfo-trade-content-api/) — Trade content and classification for customs and regulatory compliance. Delivers Harmonized System (HS) codes and product classification, current tariff and…
+- [Descartes Datamyne Global Trade Data API](https://apis.io/apis/descartes/descartes-datamyne-trade-data-api/) — Programmatic access to Descartes Datamyne's global import/export trade data - bill-of-lading and customs records, trade flows, and company/commodity…
+- [Descartes B2B API Connectivity](https://apis.io/apis/descartes/descartes-b2b-api-connectivity/) — Real-time B2B connectivity over the Descartes Global Logistics Network, complementing traditional EDI. Provides synchronous request/response integrations…
+- [Descartes Systems Group 3rd Party TMS Integration API](https://apis.io/apis/descartes/descartes-3rd-party-tms-integration-api/) — The 3rd Party TMS Integration API from Descartes Systems Group — 5 operation(s) for 3rd party tms integration.
+- [Descartes Systems Group API - XML API](https://apis.io/apis/descartes/descartes-api-xml-api/) — The API - XML API from Descartes Systems Group — 5 operation(s) for api - xml.
+- [Descartes Systems Group Carrier Data Connection and Communication API](https://apis.io/apis/descartes/descartes-carrier-data-connection-and-communication-api/) — The Carrier Data Connection and Communication API from Descartes Systems Group — 3 operation(s) for carrier data connection and communication.
+- [Descartes Systems Group Custom Integration API](https://apis.io/apis/descartes/descartes-custom-integration-api/) — The Custom Integration API from Descartes Systems Group — 2 operation(s) for custom integration.
+- [Descartes Systems Group Export API](https://apis.io/apis/descartes/descartes-export-api-api/) — The Export API API from Descartes Systems Group — 1 operation(s) for export api.
+- [Descartes Systems Group FraudGuard Carrier and Load Lookup API](https://apis.io/apis/descartes/descartes-fraudguard-carrier-and-load-lookup-api/) — The FraudGuard Carrier and Load Lookup API from Descartes Systems Group — 2 operation(s) for fraudguard carrier and load lookup.
+- [Descartes Systems Group Import API](https://apis.io/apis/descartes/descartes-import-api-api/) — The Import API API from Descartes Systems Group — 2 operation(s) for import api.
+- [Descartes Systems Group Load Visibility Order Creation - XML API](https://apis.io/apis/descartes/descartes-load-visibility-order-creation-xml-api/) — The Load Visibility Order Creation - XML API from Descartes Systems Group — 3 operation(s) for load visibility order creation - xml.
+- [Descartes Systems Group Load Visibility URL and Data Export Retrieval API](https://apis.io/apis/descartes/descartes-load-visibility-url-and-data-export-retrieval-api/) — The Load Visibility URL and Data Export Retrieval API from Descartes Systems Group — 1 operation(s) for load visibility url and data export retrieval.
+- [Descartes Systems Group Search API](https://apis.io/apis/descartes/descartes-search-api-api/) — The Search API API from Descartes Systems Group — 1 operation(s) for search api.
 
-Pricing is **enterprise / contact-sales**; no public per-call price list is published.
+### Published properties
 
-## Tags
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- Logistics
-- Supply Chain
-- Freight Visibility
-- Shipment Tracking
-- Customs Compliance
-- Global Trade
-- Trade Content
-- Carrier Sourcing
+#### Agentic access (1)
 
-## Timestamps
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- **Created:** 2026-07-05
-- **Modified:** 2026-07-05
+- [Descartes Agentic Access](https://apis.io/agentic-access/descartes/descartes-agentic-access/)
 
-## APIs
+#### Governance rules (1)
 
-### Descartes MacroPoint Visibility API
+Spectral rulesets for the provider's contracts.
 
-Real-time freight and shipment visibility. Create, update, monitor, and stop tracking sessions on loads from a TMS/ERP and receive location, order-status, trip-event, and form-submit updates via HTTP callbacks. Base `https://macropoint-lite.com/api/1.0`, HTTP Basic auth, XML bodies. Confirmed: `POST /orders/createorder`, `POST /tms/data/location`.
+- [Descartes Systems Group API Rules](https://apis.io/rules/descartes/descartes-rules/)
 
-- **Documentation:** [https://docs.macropoint.com/](https://docs.macropoint.com/)
-- **Base URL:** `https://macropoint-lite.com/api/1.0`
+#### Security (2)
 
-### Descartes MacroPoint Capacity Integration API
+Authentication, trust centre, and vulnerability disclosure.
 
-Intelligent carrier sourcing and capacity matching. An Import API pushes capacity/load data into MacroPoint Capacity; an Export API returns carrier matches. Documented at `capacitydocs.macropoint.com`. Operations modeled (`endpointsModeled`); access gated behind a Capacity account.
+- [Descartes Authentication](https://apis.io/security/descartes/descartes-authentication/)
+- [Descartes Domain Security](https://apis.io/security/descartes/descartes-domain-security/)
 
-- **Documentation:** [https://capacitydocs.macropoint.com/](https://capacitydocs.macropoint.com/)
+#### Plans and pricing (1)
 
-### Descartes MacroPoint Carrier Integration API
+Published plans, tiers and prices.
 
-Carrier-facing integration for the Visibility network. Carriers and telematics/ELD providers supply location updates (lat/long or address), load event updates (arrival/departure), and tracking-method assignment. Documented at `carrierdocs.macropoint.com` with public Postman collections. Operations modeled (`endpointsModeled`); requires carrier/partner onboarding.
+- [Descartes Plans Pricing](https://apis.io/plans/descartes/descartes-plans-pricing/)
 
-- **Documentation:** [https://carrierdocs.macropoint.com/](https://carrierdocs.macropoint.com/)
+#### Rate limits (1)
 
-### Descartes CustomsInfo Trade Content API
+Published request limits.
 
-Trade content and classification for customs and regulatory compliance - HS codes, tariff/duty rates, binding rulings, import/export restrictions, licensing and origin data, in JSON or XML for embedding in ERP/GTM/WMS/TMS. Operations modeled (`endpointsModeled`); access via contract with a Descartes trade content specialist.
+- [Descartes Rate Limits](https://apis.io/rate-limits/descartes/descartes-rate-limits/)
 
-- **Documentation:** [https://www.customsinfo.com/knowledge-center/trade-content-apis-streamlining-classification-and-enhancing-business-integration/](https://www.customsinfo.com/knowledge-center/trade-content-apis-streamlining-classification-and-enhancing-business-integration/)
+#### FinOps (1)
 
-### Descartes Datamyne Global Trade Data API
+What the API costs to run, by operation.
 
-Programmatic access to Descartes Datamyne's global import/export trade data - bill-of-lading and customs records, trade flows, and company/commodity intelligence. Operations modeled (`endpointsModeled`); access via subscription/contract.
+- [Descartes Finops](https://apis.io/finops/descartes/descartes-finops/)
 
-- **Documentation:** [https://www.datamyne.com/our-product/global-trade-data-api/](https://www.datamyne.com/our-product/global-trade-data-api/)
+## Where to find this API
 
-### Descartes B2B API Connectivity
-
-Real-time B2B connectivity over the Global Logistics Network, complementing EDI. Synchronous request/response for marketplace connectivity (listings, orders, payments, reports with retailers such as Amazon and bol.com) and multimodal carrier connectivity (rates, shipments, bookings, waybills). APIs discovered and keys acquired via the Descartes API portal. Operations modeled (`endpointsModeled`).
-
-- **Developer Portal:** [https://api.descartes.com/](https://api.descartes.com/)
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.descartes.com)
-- [Developer Portal](https://api.descartes.com/)
 - [Documentation](https://docs.macropoint.com/)
-- [LinkedIn](https://www.linkedin.com/company/descartes-systems-group)
-- [Postman Workspace](https://www.postman.com/macropoint-telematics)
-- [Plans](plans/descartes-plans-pricing.yml)
-- [Rate Limits](rate-limits/descartes-rate-limits.yml)
-- [Fin Ops](finops/descartes-finops.yml)
+- [Getting started](https://dev.descartes.com/solutions/transportation-management/carrier-onboarding-fraud-prevention)
+- [Pricing](http://www.descartes.com/resources/blog/pricing-guide-to-denied-party-screening-software-solutions)
+- [Support](https://www.descartes.com/customer-success/customer-support-and-training/customer-service-desk)
+- [Blog](https://www.descartes.com/resources/blog)
+- [Terms of service](https://www.descartes.com/legal/general-terms/terms-use-descartes-ideas-portals)
+- [Privacy policy](https://www.descartes.com/privacy-center)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 49.5** — developing · rubric 0.24.0 · scored 2026-10-20
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 47.2 |
+| Contract governance | 70.9 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 54.8 |
+| Access clarity | 52.6 |
+
+**Agent readiness 33.6** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | unknown |
+| Reversibility Documented | — |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 20.8** — Telecommunications
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/descartes/](https://apis.io/providers/descartes/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Descartes Systems Group: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/descartes/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
